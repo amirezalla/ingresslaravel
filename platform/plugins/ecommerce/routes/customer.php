@@ -116,6 +116,11 @@ if (defined('THEME_MODULE_SCREEN_NAME')) {
                 'uses' => 'PublicController@getOverview',
             ]);
 
+            Route::get('upload-nft', [
+                'as' => 'upload-nft',
+                'uses' => 'PublicController@getUploadNft',
+            ]);
+
             Route::get('edit-account', [
                 'as' => 'edit-account',
                 'uses' => 'PublicController@getEditAccount',

@@ -88,21 +88,11 @@
                                             @endif
 
                                             @if (is_plugin_active('ecommerce'))
-                                                @if (count($currencies) > 1)
-                                                    <li>
-                                                        <a class="language-dropdown-active" href="#"> <i class="fa fa-coins"></i> {{ get_application_currency()->title }} <i class="fa fa-chevron-down"></i></a>
-                                                        <ul class="language-dropdown">
-                                                            @foreach ($currencies as $currency)
-                                                                @if ($currency->id !== get_application_currency_id())
-                                                                    <li><a href="{{ route('public.change-currency', $currency->title) }}">{{ $currency->title }}</a></li>
-                                                                @endif
-                                                            @endforeach
-                                                        </ul>
-                                                    </li>
-                                                @endif
                                                 @if (auth('customer')->check())
                                                     <li><a href="{{ route('customer.overview') }}" class='userNavigation'><i class='fa fa-user'></i>{{ substr(auth('customer')->user()->eth_address, 0, 10) . '...' . substr(auth('customer')->user()->eth_address, -3)}}</a></li>
-                                                @else
+                                                    <li><a href='/customer/upload-nft' class='userNavigation'>Upload Nft</a></li>
+
+                                                    @else
                                                     <li><button class='userNavigation' id='connectButton'>Connect</button></li>
                                                 @endif
                                             @endif

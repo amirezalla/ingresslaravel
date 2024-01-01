@@ -750,4 +750,19 @@ class PublicController extends Controller
             'plugins/ecommerce::themes.customers.product-reviews.list'
         )->render();
     }
+
+    public function getUploadNft()
+    {
+        SeoHelper::setTitle(__('Upload Nft'));
+
+        Theme::breadcrumb()->add(__('Home'), route('public.index'))
+            ->add(__('Upload Nft'), route('customer.upload-nft'));
+
+        return Theme::scope(
+            'ecommerce.customers.upload-nft',
+            [],
+            'plugins/ecommerce::themes.customers.upload-nft'
+        )->render();
+    }
+
 }

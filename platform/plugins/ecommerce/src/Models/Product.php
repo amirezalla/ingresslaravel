@@ -49,8 +49,8 @@ class Product extends BaseModel
         'is_featured',
         'brand_id',
         'is_variation',
-        'sale_type',
-        'price',
+        'sale_type', // 
+        'price', // 
         'sale_price',
         'start_date',
         'end_date',
