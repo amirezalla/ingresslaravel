@@ -4755,7 +4755,9 @@ header.header-area .sticky-bar:not(.stick) .main-categories-wrap>a.cant-close>i 
 }
 
 .header-middle-ptb-1 {
-    padding: 25px 0
+    padding: 25px 0;
+    background: green;
+
 }
 
 .cart-dropdown-wrap {
