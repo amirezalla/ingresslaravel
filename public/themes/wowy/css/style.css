@@ -8170,7 +8170,7 @@ background: rgb(8, 25, 56);
 
     .hero-slider-1 {
         height: 298px;
-        background: red;
+
     }
 
     .hero-slider-content-2 h1 {
@@ -10557,5 +10557,7 @@ input.qty-input[type=number] {
     border: none !important;
 
 }
-
+footer{
+    background:blue;
+}
 
