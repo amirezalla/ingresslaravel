@@ -56,6 +56,18 @@ class NftController extends BaseController
 
 
     }
+    
+    protected function handleUploadResponse(array $result): JsonResponse
+    {
+        if (! $result['error']) {
+            return RvMedia::responseSuccess([
+                'id' => $result['data']->id,
+                'src' => RvMedia::url($result['data']->url),
+            ]);
+        }
+
+        return RvMedia::responseError($result['message']);
+    }
     public function deploy(){
         // Make sure this path points to the git directory in your cPanel
         $output = shell_exec('cd /home/ingressdefi/public_html && git pull 2>&1');
