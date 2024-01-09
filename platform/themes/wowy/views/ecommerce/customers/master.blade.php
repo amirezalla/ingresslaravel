@@ -87,10 +87,11 @@
                                                         </div>
                                                     </div>
 
-                                                        <span>Joined:{{ auth('customer')->user()->created_at}}</span>
+
 
                                                 </div>
                                             </div>
+                                            <span>Joined:{{ auth('customer')->user()->created_at}}</span>
                                             <div id="print-msg" class="text-danger hidden"></div>
                                         </div>
                                     </form>
