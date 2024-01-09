@@ -4756,7 +4756,7 @@ header.header-area .sticky-bar:not(.stick) .main-categories-wrap>a.cant-close>i 
 
 .header-middle-ptb-1 {
     padding: 25px 0;
-    background: red;
+   
 }
 
 .cart-dropdown-wrap {
@@ -5493,7 +5493,9 @@ header.header-area .sticky-bar:not(.stick) .main-categories-wrap>a.cant-close>i 
 }
 
 .header-style-2 .header-middle-ptb-1 {
-    padding: 35px 0
+    padding: 35px 0;
+    background: green;
+
 }
 
 .header-style-2 .select2-container--default .select2-selection--single {
