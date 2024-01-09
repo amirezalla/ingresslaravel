@@ -62,7 +62,7 @@
         allowMultiple: false,
         maxFiles: 1,
         server: {
-            url: '/nft/uploadNftImage',
+            url: '/api/nft/uploadNftImage',
             process: {
                 url: '/',
                 method: 'POST',
