@@ -29,62 +29,58 @@ class NftController extends BaseController
 
 
     public function postUploadNft(Request $request){
-        // Use file extensions for validation
-        $allowedExtensions = ['jpeg', 'jpg', 'png', 'gif', 'mp4', 'obj']; 
+        $allowedExtensions = ['jpeg', 'jpg', 'png', 'gif', 'mp4', 'obj']; // Allowed file extensions
     
         $file = $request->file('filepond');
-    
-        // Check if file is uploaded and valid
         if (!$file || !$file->isValid()) {
             return response()->json(['error' => true, 'message' => 'No file uploaded or file upload error.']);
         }
     
         $extension = $file->getClientOriginalExtension();
-    
-        // Validate file extension
-        if (!in_array($extension, $allowedExtensions)) {
+        if (!in_array(strtolower($extension), $allowedExtensions)) {
             return response()->json(['error' => true, 'message' => 'Invalid file type.']);
         }
     
-        try {
-            $optimizedFile = $this->optimizeFile($file);
-            $path = $optimizedFile->store('nfts', 'public'); // Store in storage/app/public/nfts
+        // Generate a unique hashed name for the file
+        $hashedName = $file->hashName();
     
-            return response()->json(['success' => true, 'path' => $path]);
+        try {
+            // Save original file with hashed name
+            $originalPath = $file->storeAs('nfts/original', $hashedName, 'public');
+    
+            // Generate and save scaled versions for images
+            if (in_array(strtolower($extension), ['jpeg', 'jpg', 'png', 'gif'])) {
+                $this->saveScaledVersions($file, $hashedName, 'nfts/scaled');
+            }
+    
+            return response()->json(['success' => true, 'path' => $originalPath]);
         } catch (Exception $exception) {
             return response()->json(['error' => true, 'message' => $exception->getMessage()]);
         }
     }
 
-private function optimizeFile($file)
-{
-    // Determine file type and apply appropriate optimization
-    $fileType = $file->getMimeType();
-
-    switch ($fileType) {
-        case 'image/jpeg':
-        case 'image/png':
-            // Optimize images using Intervention Image
-            $image = Image::make($file);
-            $image->resize($image->width() * 0.5, $image->height() * 0.5); // Example: resize to 50%
-            return $image->stream(); // Return the optimized image stream
-        case 'video/mp4':
-            // Optimize video using FFMpeg or similar
-            // Example: $video = FFMpeg::fromDisk('videos')->open($file);
-            // Apply your video optimization logic here
-            break;
-        // Add cases for other file types (3D files, GIFs, etc.)
+    private function saveScaledVersions($file, $hashedName, $directory)
+    {
+        $image = Image::make($file);
+    
+        // Save 0.5x scaled version
+        $image->resize($image->width() * 0.5, null, function ($constraint) {
+            $constraint->aspectRatio();
+        })->save(storage_path('app/public/' . $directory . '/0.5x_' . $hashedName));
+    
+        // Save 0.2x scaled version
+        $image->resize($image->width() * 0.2, null, function ($constraint) {
+            $constraint->aspectRatio();
+        })->save(storage_path('app/public/' . $directory . '/0.2x_' . $hashedName));
     }
 
-    return $file; // Return the file as-is if not an image or video
-}
-public function deploy(){
-    // Make sure this path points to the git directory in your cPanel
-    $output = shell_exec('cd /home/ingressdefi/public_html && git pull 2>&1');
-    return "<pre>$output</pre>";
+    public function deploy(){
+        // Make sure this path points to the git directory in your cPanel
+        $output = shell_exec('cd /home/ingressdefi/public_html && git pull 2>&1');
+        return "<pre>$output</pre>";
 
 
-}
+    }
 
     }
 
