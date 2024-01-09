@@ -22,7 +22,6 @@ class NftController extends BaseController
 {
     public function postUploadNft(Request $request)
     {
-        dd($request->file('filepond'));
         if (! RvMedia::isChunkUploadEnabled()) {
             $result = RvMedia::handleUpload(Arr::first($request->file('filepond')), $request->input('folder_id', 0));
 
@@ -31,7 +30,7 @@ class NftController extends BaseController
 
         try {
             // Create the file receiver
-            $receiver = new FileReceiver('file', $request, DropZoneUploadHandler::class);
+            $receiver = new FileReceiver('filepond', $request, DropZoneUploadHandler::class);
             // Check if the upload is success, throw exception or return response you need
             if ($receiver->isUploaded() === false) {
                 throw new UploadMissingFileException();
