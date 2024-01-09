@@ -4,9 +4,11 @@
     <div class="container mt-20 mb-20">
     <div class="row">
         <div class="col-md-6">
-            <!-- Drag and Drop Area -->
-            <div class="border d-flex justify-content-center align-items-center" style="height: 200px;">
-            <input type="file" class="filepond" name="filepond" id="filepond" />
+            <form id="uploadForm" action="/nft/uploadNftImage" method="post" enctype="multipart/form-data">
+            <input type="file" id="imageInput" name="filepond" accept="image/*">
+            <img id="preview" src="#" alt="Image preview" style="display: none;">
+            <button type="submit">Upload Image</button>
+        </form>
         </div>
         </div>
         <div class="col-md-6">
@@ -53,31 +55,25 @@
 <!-- FilePond plugins -->
 <script src="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.min.js"></script>
 <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.js"></script>
-<script>
 
-    document.addEventListener('DOMContentLoaded', () => {
-        const inputElement = document.querySelector('input[type="file"]');
-        const pond = FilePond.create(document.querySelector('.filepond'), {
-        allowMultiple: false,
-        maxFiles: 1,
-        server: {
-            url: '/nft/uploadNftImage',
-            process: {
-                url: '',
-                method: 'POST',
-                withCredentials: false,
-                headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}'},
-                timeout: 7000,
-                onload: null,
-                onerror: null,
-                ondata: null
+
+<script>
+        // JavaScript to handle image preview
+        document.getElementById('imageInput').addEventListener('change', function(event) {
+            var preview = document.getElementById('preview');
+            var files = event.target.files;
+
+            if (files && files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                };
+                reader.readAsDataURL(files[0]);
             }
-        },
-        acceptedFileTypes: ['image/*'],
-        // ... other options
-    });
-    });
+        });
     </script>
+
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
