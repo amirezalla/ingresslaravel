@@ -8,7 +8,7 @@
                 <input type="file" id="imageInput" name="filepond" accept="image/*">
                 @csrf
                 <img id="preview" src="#" alt="Image preview" style="display: none;">
-                <button type="submit">Upload Image</button>
+                <button type="submit" class="btn btn_ingress">Upload Image</button>
             </form>
         </div>
         <div class="col-md-6">
@@ -45,7 +45,7 @@
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Creator name">
                 </div>
-                <button type="submit" class="col-12 btn btn-primary btn-block">Mint</button>
+                <button type="submit" class="col-12 btn btn_ingress btn-block">Mint</button>
             </form>
         </div>
     </div>
