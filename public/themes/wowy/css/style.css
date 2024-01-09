@@ -10566,9 +10566,14 @@ footer {
 }
 
 
+.header-info>ul>li a {
+    color: white;
+    background: linear-gradient(45deg, #590f87 0%, #ff0076 50%, #590f87 100%);
+    transition: background 0.2s;
+    /* More specific transition */
+}
 
 .header-info>ul>li a:hover {
     color: white;
-    background-color: #590f87;
-    background: linear-gradient(70deg, #cd02c7 100%, #ff0076 50%, #a66cc9 140%)
+    background: linear-gradient(45deg, #cd02c7 0%, #ff0076 50%, #cd02c7 100%);
 }
