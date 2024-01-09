@@ -31,9 +31,8 @@ class NftController extends BaseController
 public function postUploadNft(Request $request){
     $allowedMimeTypes = ['image/jpeg', 'image/png', 'image/gif', 'video/mp4', 'application/octet-stream']; // Add other MIME types as needed
     $file = $request->file('filepond');
-    $guesser = MimeTypeGuesser::getInstance();
-    $mimeType = $guesser->guess($file->getPathname());
-    if (!$file || !in_array($mimeType , $allowedMimeTypes)) {
+    $extension = $file->getClientOriginalExtension();
+    if (!$file || !in_array($extension , $allowedMimeTypes)) {
         return response()->json(['error' => true, 'message' => 'Invalid file type.']);
     }
 
