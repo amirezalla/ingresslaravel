@@ -67,7 +67,6 @@
                 url: '/',
                 method: 'POST',
                 withCredentials: false,
-                headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}'},
                 timeout: 7000,
                 onload: null,
                 onerror: null,
