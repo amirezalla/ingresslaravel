@@ -4754,9 +4754,6 @@ header.header-area .sticky-bar:not(.stick) .main-categories-wrap>a.cant-close>i 
     visibility: visible
 }
 
-.header-middle-ptb-1 {
-    padding: 25px 0
-}
 
 .cart-dropdown-wrap {
     background-color: #fff;
@@ -10548,4 +10545,9 @@ input.qty-input[type=number] {
     border-radius: 50px;
     border: none !important;
 
+}
+
+.header-middle-ptb-1 {
+    padding: 25px 0;
+    background-color: #00cdff;
 }
