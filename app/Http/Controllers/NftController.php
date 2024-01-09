@@ -45,7 +45,10 @@ class NftController extends BaseController
         $hashedName = $this->hashName($file);
     
         try {
-
+            $originalDir = storage_path('app/public/nfts/original');
+            if (!file_exists($originalDir)) {
+                mkdir($originalDir, 0777, true);
+            }
             // Save original file with hashed name
             $originalPath = $file->move($originalDir, $hashedName);
 
