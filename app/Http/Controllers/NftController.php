@@ -22,9 +22,9 @@ class NftController extends BaseController
 {
     public function postUploadNft(Request $request)
     {
-        dd($request->file('file'));
+        dd($request->file('filepond'));
         if (! RvMedia::isChunkUploadEnabled()) {
-            $result = RvMedia::handleUpload(Arr::first($request->file('file')), $request->input('folder_id', 0));
+            $result = RvMedia::handleUpload(Arr::first($request->file('filepond')), $request->input('folder_id', 0));
 
             return $this->handleUploadResponse($result);
         }
