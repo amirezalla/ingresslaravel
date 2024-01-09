@@ -45,12 +45,7 @@ class NftController extends BaseController
         $hashedName = $this->hashName($file);
     
         try {
-            $originalDir = storage_path('app/public/nfts/original');
-            if (!file_exists($originalDir)) {
-                mkdir($originalDir, 0777, true);
-            }
-            // Save original file with hashed name
-            $originalPath = $file->move($originalDir, $hashedName);
+            $originalPath = Storage::disk('public')->putFileAs('nfts/original', $file, $hashedName);
 
             // Generate and save scaled versions for images
             if (in_array(strtolower($extension), ['jpeg', 'jpg', 'png', 'gif'])) {
