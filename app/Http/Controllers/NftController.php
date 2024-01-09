@@ -32,7 +32,7 @@ class NftController extends BaseController
         $allowedExtensions = ['jpeg', 'jpg', 'png', 'gif', 'mp4', 'obj']; // Allowed file extensions
     
         $file = $request->file('filepond');
-        if (!$file || !$file->isValid()) {
+        if (!$file) {
             return response()->json(['error' => true, 'message' => 'No file uploaded or file upload error.']);
         }
     
