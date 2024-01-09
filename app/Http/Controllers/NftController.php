@@ -28,7 +28,7 @@ class NftController extends BaseController
 
 
 
-    public function postUploadNft(Request $request){
+    public function postUploadNft(Request $request) {
         $allowedExtensions = ['jpeg', 'jpg', 'png', 'gif', 'mp4', 'obj']; // Allowed file extensions
     
         $file = $request->file('filepond');
@@ -36,53 +36,40 @@ class NftController extends BaseController
             return response()->json(['error' => true, 'message' => 'No file uploaded or file upload error.']);
         }
     
-        $extension = $file->getClientOriginalExtension();
-        if (!in_array(strtolower($extension), $allowedExtensions)) {
+        $extension = strtolower($file->getClientOriginalExtension());
+        if (!in_array($extension, $allowedExtensions)) {
             return response()->json(['error' => true, 'message' => 'Invalid file type.']);
         }
-        
-            $hashedName = $this->hashName($file);
-
-            $originalDir = storage_path('app/public/nfts/original');
-            if (!file_exists($originalDir)) {
-                mkdir($originalDir, 0777, true);
-            }
-            // Save original file with hashed name
-            $originalPath = $file->move($originalDir, $hashedName);
-
-            if (in_array(strtolower($extension), ['jpeg', 'jpg', 'png', 'gif'])) {
-                $filePath = storage_path('app/public/' . $originalPath);
-                $this->saveScaledVersions($filePath, $hashedName, 'nfts/scaled');
-            }    
-        
-            return response()->json(['success' => true, 'path' => $originalPath]);
-
+    
+        $hashedName = $this->hashName($file);
+        $originalPath = $file->storeAs('nfts/original', $hashedName, 'public');
+    
+        if (in_array($extension, ['jpeg', 'jpg', 'png', 'gif'])) {
+            $this->saveScaledVersions($file, $hashedName, 'nfts/scaled');
+        }    
+    
+        return response()->json(['success' => true, 'path' => Storage::disk('public')->url($originalPath)]);
     }
-    private function hashName($file)
-    {
-        // Example of custom hashing logic
-        // You can modify this according to your needs
+    
+    private function hashName($file) {
         $originalName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
         $extension = $file->getClientOriginalExtension();
         $hash = md5($originalName . microtime());
-
         return $hash . '.' . $extension;
     }
-
-
-    private function saveScaledVersions($file, $hashedName, $directory)
-    {
-        $image = Image::make($file);
+    
+    private function saveScaledVersions($file, $hashedName, $directory) {
+        $image = Image::make(Storage::disk('public')->path('nfts/original/' . $hashedName));
     
         // Save 0.5x scaled version
         $image->resize($image->width() * 0.5, null, function ($constraint) {
             $constraint->aspectRatio();
-        })->save(storage_path('app/public/' . $directory . '/0.5x_' . $hashedName));
+        })->save(Storage::disk('public')->path($directory . '/0.5x_' . $hashedName));
     
         // Save 0.2x scaled version
         $image->resize($image->width() * 0.2, null, function ($constraint) {
             $constraint->aspectRatio();
-        })->save(storage_path('app/public/' . $directory . '/0.2x_' . $hashedName));
+        })->save(Storage::disk('public')->path($directory . '/0.2x_' . $hashedName));
     }
 
     public function deploy(){
