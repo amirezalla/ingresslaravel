@@ -18,7 +18,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
-class NftConroller extends BaseController
+class NftController extends BaseController
 {
     public function postUploadNft(Request $request)
     {
