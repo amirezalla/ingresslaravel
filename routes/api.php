@@ -10,3 +10,8 @@
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+
+use App\Http\Controllers\NftController;
+
+
+Route::post('nft/uploadNftImage', [NftController::class, 'postUploadNft']);
