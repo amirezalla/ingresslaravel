@@ -28,23 +28,33 @@ class NftController extends BaseController
 
 
 
-public function postUploadNft(Request $request){
-    $allowedMimeTypes = ['jpeg','jpg', 'png', 'gif', 'mp4', 'obj']; // Add other MIME types as needed
-    $file = $request->file('filepond');
-    $extension = $file->getClientOriginalExtension();
-    if (!$file || !in_array($extension , $allowedMimeTypes)) {
-        return response()->json(['error' => true, 'message' => 'Invalid file type.']);
+    public function postUploadNft(Request $request){
+        // Use file extensions for validation
+        $allowedExtensions = ['jpeg', 'jpg', 'png', 'gif', 'mp4', 'obj']; 
+    
+        $file = $request->file('filepond');
+    
+        // Check if file is uploaded and valid
+        if (!$file || !$file->isValid()) {
+            return response()->json(['error' => true, 'message' => 'No file uploaded or file upload error.']);
+        }
+    
+        $extension = $file->getClientOriginalExtension();
+    
+        // Validate file extension
+        if (!in_array($extension, $allowedExtensions)) {
+            return response()->json(['error' => true, 'message' => 'Invalid file type.']);
+        }
+    
+        try {
+            $optimizedFile = $this->optimizeFile($file);
+            $path = $optimizedFile->store('nfts', 'public'); // Store in storage/app/public/nfts
+    
+            return response()->json(['success' => true, 'path' => $path]);
+        } catch (Exception $exception) {
+            return response()->json(['error' => true, 'message' => $exception->getMessage()]);
+        }
     }
-
-    try {
-        $optimizedFile = $this->optimizeFile($file);
-        $path = $optimizedFile->store('nfts', 'public'); // Store in storage/app/public/nfts
-
-        return response()->json(['success' => true, 'path' => $path]);
-    } catch (Exception $exception) {
-        return response()->json(['error' => true, 'message' => $exception->getMessage()]);
-    }
-}
 
 private function optimizeFile($file)
 {
