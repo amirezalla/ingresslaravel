@@ -77,9 +77,7 @@
                                         <div class="avatar-upload-container">
                                             <div class="form-group mb-0">
                                                 <div id="account-avatar">
-                                                    <div>
-                                                        <h6>{{ auth('customer')->user()->created_at}}</h6>
-                                                    </div>
+
                                                     <div class="profile-image">
                                                         <div class="avatar-view mt-card-avatar">
                                                             <img class="br2 align-middle" src="{{ auth('customer')->user()->avatar_url }}" alt="{{ auth('customer')->user()->name }}">
@@ -87,6 +85,9 @@
                                                                 <span><i class="fa fa-edit"></i></span>
                                                             </div>
                                                         </div>
+                                                    </div>
+                                                    <div>
+                                                        <h6>Joined:{{ auth('customer')->user()->created_at}}</h6>
                                                     </div>
                                                 </div>
                                             </div>
