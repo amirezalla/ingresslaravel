@@ -45,13 +45,14 @@ class NftController extends BaseController
         $hashedName = $this->hashName($file);
     
         try {
+
             // Save original file with hashed name
-            $originalPath = $file->storeAs('nfts', $hashedName, 'public');
-    
+            $originalPath = $file->move($originalDir, $hashedName);
+
             // Generate and save scaled versions for images
             if (in_array(strtolower($extension), ['jpeg', 'jpg', 'png', 'gif'])) {
-                $this->saveScaledVersions($file, $hashedName, 'nfts/scaled');
-            }
+                $this->saveScaledVersions($originalPath, $hashedName, 'nfts/scaled');
+            }    
     
             return response()->json(['success' => true, 'path' => $originalPath]);
         } catch (Exception $exception) {
