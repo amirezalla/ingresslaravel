@@ -11,7 +11,7 @@
 |
 */
 use Botble\Media\Http\Controllers\MediaFileController;
-use App\Http\Controllers\NftConroller;
+use App\Http\Controllers\NftController;
 
 Route::post('nft/uploadNftImage', [MediaFileController::class, 'postUploadNft']);
 
