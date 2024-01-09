@@ -86,9 +86,9 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div>
+
                                                         <h6>Joined:{{ auth('customer')->user()->created_at}}</h6>
-                                                    </div>
+                                                    
                                                 </div>
                                             </div>
                                             <div id="print-msg" class="text-danger hidden"></div>
