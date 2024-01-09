@@ -5,11 +5,11 @@
     <div class="row">
         <div class="col-md-6">
             <form id="uploadForm" action="/nft/uploadNftImage" method="post" enctype="multipart/form-data">
-            <input type="file" id="imageInput" name="filepond" accept="image/*">
-            <img id="preview" src="#" alt="Image preview" style="display: none;">
-            <button type="submit">Upload Image</button>
-        </form>
-        </div>
+                <input type="file" id="imageInput" name="filepond" accept="image/*">
+                @csrf
+                <img id="preview" src="#" alt="Image preview" style="display: none;">
+                <button type="submit">Upload Image</button>
+            </form>
         </div>
         <div class="col-md-6">
             <!-- Artwork Details Form -->
