@@ -10559,8 +10559,9 @@ input.qty-input[type=number] {
     border: none !important;
 
 }
-footer{
-    background:rgb(8, 26, 56);
+
+footer {
+    background: rgb(8, 26, 56);
 }
 
 
@@ -10568,5 +10569,5 @@ footer{
 .header-info>ul>li a:hover {
     color: white;
     background-color: #590f87;
-    background: (70deg, #cd02c7 100%, #ff0076 50%, #a66cc9 140%)
+    background: linear-gradient(70deg, #cd02c7 100%, #ff0076 50%, #a66cc9 140%)
 }
