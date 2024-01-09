@@ -64,7 +64,7 @@
         server: {
             url: '/api/nft/uploadNftImage',
             process: {
-                url: '/',
+                url: '',
                 method: 'POST',
                 withCredentials: false,
                 timeout: 7000,
