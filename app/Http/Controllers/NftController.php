@@ -32,6 +32,7 @@ public function postUploadNft(Request $request){
     $allowedMimeTypes = ['image/jpeg', 'image/png', 'image/gif', 'video/mp4', 'application/octet-stream']; // Add other MIME types as needed
     $file = $request->file('filepond');
     $extension = $file->getClientOriginalExtension();
+    dd($extension);
     if (!$file || !in_array($extension , $allowedMimeTypes)) {
         return response()->json(['error' => true, 'message' => 'Invalid file type.']);
     }
