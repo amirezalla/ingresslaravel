@@ -18,7 +18,7 @@
                     @csrf
                     <div class="form-subcriber d-flex wow fadeIn animated ">
                         <input type="email" name="email" class="form-control bg-white font-small" placeholder="{{ __('Enter your email') }}">
-                        <button class="btn bg-dark text-white" type="submit">{{ __('Subscribe') }}</button>
+                        <button class="btn_ingress" type="submit">{{ __('Subscribe') }}</button>
                     </div>
                     @if (setting('enable_captcha') && is_plugin_active('captcha'))
                         <div class="col-auto">

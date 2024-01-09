@@ -4413,7 +4413,14 @@ h6.post-title {
 .header-info>ul>li:last-child:before {
     display: none
 }
+.btn_ingress{
+    color:white;
+    background: #590f87;
+    background: -o-linear-gradient(45deg, #590f87 0%, #ff0076 50%, #590f87 100%);
+    background: linear-gradient(45deg, #590f87 0%, #ff0076 50%, #590f87 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#590f87', endColorstr='#590f87',GradientType=1 );
 
+}
 .header-info>ul>li a {
 color:white;
     background: #590f87;
