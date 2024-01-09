@@ -1,6 +1,7 @@
 <link href="https://unpkg.com/filepond/dist/filepond.min.css" rel="stylesheet">
     <!-- FilePond Image Preview plugin stylesheet -->
     <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css" rel="stylesheet">
+    
     <div class="container mt-20 mb-20">
     <div class="row">
         <div class="col-md-6">
@@ -8,7 +9,6 @@
                 <input type="file" id="imageInput" name="filepond" accept="image/*">
                 @csrf
                 <img id="preview" src="#" alt="Image preview" style="display: none;">
-                <button type="submit" class="btn btn_ingress">Upload Image</button>
             </form>
         </div>
         <div class="col-md-6">
@@ -54,15 +54,27 @@
 <script src="https://unpkg.com/filepond/dist/filepond.min.js"></script>
 <!-- FilePond plugins -->
 <script src="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.js"></script>
 
 
 <script>
         // JavaScript to handle image preview
         document.getElementById('imageInput').addEventListener('change', function(event) {
+        if (event.target.files.length > 0) {
+            var file = event.target.files[0];
+
+            // Show SweetAlert for the ongoing process
+            Swal.fire({
+                title: 'Uploading...',
+                html: 'Please wait while we upload your file',
+                allowOutsideClick: false,
+                onBeforeOpen: () => {
+                    Swal.showLoading();
+                },
+            });
             var preview = document.getElementById('preview');
             var files = event.target.files;
-
             if (files && files[0]) {
                 var reader = new FileReader();
                 reader.onload = function(e) {
@@ -71,7 +83,33 @@
                 };
                 reader.readAsDataURL(files[0]);
             }
-        });
+
+            // Prepare form data
+            var formData = new FormData();
+            formData.append('filepond', file);
+
+            // AJAX request to server
+            fetch('/nft/uploadNftImage', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                Swal.fire(
+                    'Uploaded!',
+                    'Your file has been uploaded successfully.',
+                    'success'
+                );
+            })
+            .catch(error => {
+                Swal.fire(
+                    'Error!',
+                    'There was a problem uploading your file.',
+                    'error'
+                );
+            });
+        }
+    });
     </script>
 
 
