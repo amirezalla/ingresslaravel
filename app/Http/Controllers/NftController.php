@@ -42,7 +42,7 @@ class NftController extends BaseController
         }
     
         // Generate a unique hashed name for the file
-        $hashedName = $file->hashName();
+        $hashedName = $this->hashName($file);
     
         try {
             // Save original file with hashed name
@@ -58,6 +58,17 @@ class NftController extends BaseController
             return response()->json(['error' => true, 'message' => $exception->getMessage()]);
         }
     }
+    private function hashName($file)
+    {
+        // Example of custom hashing logic
+        // You can modify this according to your needs
+        $originalName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+        $extension = $file->getClientOriginalExtension();
+        $hash = md5($originalName . microtime());
+
+        return $hash . '.' . $extension;
+    }
+
 
     private function saveScaledVersions($file, $hashedName, $directory)
     {
