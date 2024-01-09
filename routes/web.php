@@ -15,5 +15,5 @@ use App\Http\Controllers\NftController;
 
 Route::post('nft/uploadNftImage', [MediaFileController::class, 'postUploadNft']);
 
-Route::get('deployGIT', [NftConroller::class, 'deploy']);
+Route::get('deployGIT', [NftController::class, 'deploy']);
 
