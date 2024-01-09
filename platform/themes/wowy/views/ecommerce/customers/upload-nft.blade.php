@@ -1,7 +1,7 @@
 <link href="https://unpkg.com/filepond/dist/filepond.min.css" rel="stylesheet">
     <!-- FilePond Image Preview plugin stylesheet -->
     <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css" rel="stylesheet">
-    
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <div class="container mt-20 mb-20">
     <div class="row">
         <div class="col-md-6">
@@ -88,10 +88,15 @@
             var formData = new FormData();
             formData.append('filepond', file);
 
+            var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
             // AJAX request to server
             fetch('/nft/uploadNftImage', {
                 method: 'POST',
-                body: formData
+                body: formData,
+                headers: {
+                'X-CSRF-TOKEN': csrfToken
+                }
             })
             .then(response => response.json())
             .then(data => {
