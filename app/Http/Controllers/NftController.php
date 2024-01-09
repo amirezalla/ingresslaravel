@@ -29,7 +29,7 @@ class NftController extends BaseController
 
 
 public function postUploadNft(Request $request){
-    $allowedMimeTypes = ['jpeg', 'png', 'gif', 'mp4', 'obj']; // Add other MIME types as needed
+    $allowedMimeTypes = ['jpeg','jpg', 'png', 'gif', 'mp4', 'obj']; // Add other MIME types as needed
     $file = $request->file('filepond');
     $extension = $file->getClientOriginalExtension();
     if (!$file || !in_array($extension , $allowedMimeTypes)) {
