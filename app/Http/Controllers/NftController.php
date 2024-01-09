@@ -40,12 +40,16 @@ class NftController extends BaseController
         if (!in_array(strtolower($extension), $allowedExtensions)) {
             return response()->json(['error' => true, 'message' => 'Invalid file type.']);
         }
-        $hashedName = $this->hashName($file);
+        
+            $hashedName = $this->hashName($file);
 
-        try {
-            $originalPath = Storage::disk('public')->putFileAs('nfts/original', $file, $hashedName);
-    
-            // Generate and save scaled versions for images
+            $originalDir = storage_path('app/public/nfts/original');
+            if (!file_exists($originalDir)) {
+                mkdir($originalDir, 0777, true);
+            }
+            // Save original file with hashed name
+            $originalPath = $file->move($originalDir, $hashedName);
+
             if (in_array(strtolower($extension), ['jpeg', 'jpg', 'png', 'gif'])) {
                 $filePath = storage_path('app/public/' . $originalPath);
                 $this->saveScaledVersions($filePath, $hashedName, 'nfts/scaled');
@@ -53,9 +57,6 @@ class NftController extends BaseController
         
             return response()->json(['success' => true, 'path' => $originalPath]);
 
-        } catch (Exception $exception) {
-            return response()->json(['error' => true, 'message' => $exception->getMessage()]);
-        }
     }
     private function hashName($file)
     {
