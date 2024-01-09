@@ -10,10 +10,10 @@
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-use Botble\Media\Http\Controllers\MediaFileController;
 use App\Http\Controllers\NftController;
 
-Route::post('nft/uploadNftImage', [MediaFileController::class, 'postUploadNft']);
+
+Route::post('nft/uploadNftImage', [NftController::class, 'postUploadNft']);
 
 Route::get('deployGIT', [NftController::class, 'deploy']);
  
