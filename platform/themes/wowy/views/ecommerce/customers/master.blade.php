@@ -78,7 +78,7 @@
                                             <div class="form-group mb-0">
                                                 <div id="account-avatar">
                                                     <div>
-                                                        <h2>{{ auth('customer')->user()->created_at}}</h2>
+                                                        <h6>{{ auth('customer')->user()->created_at}}</h6>
                                                     </div>
                                                     <div class="profile-image">
                                                         <div class="avatar-view mt-card-avatar">
