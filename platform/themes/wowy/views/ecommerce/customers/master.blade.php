@@ -87,7 +87,7 @@
                                                         </div>
                                                     </div>
 
-                                                        <p>Joined:{{ auth('customer')->user()->created_at}}</p>
+                                                        <span>Joined:{{ auth('customer')->user()->created_at}}</span>
 
                                                 </div>
                                             </div>
