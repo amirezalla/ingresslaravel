@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Image; // Assuming you're using the Intervention Image library
 use FFMpeg; // If using an FFMpeg library for video processing
+use Symfony\Component\HttpFoundation\File\MimeType\MimeTypeGuesser;
+
 
 class NftController extends BaseController
 {
@@ -29,7 +31,9 @@ class NftController extends BaseController
 public function postUploadNft(Request $request){
     $allowedMimeTypes = ['image/jpeg', 'image/png', 'image/gif', 'video/mp4', 'application/octet-stream']; // Add other MIME types as needed
     $file = $request->file('filepond');
-    if (!$file || !in_array($file->getMimeType(), $allowedMimeTypes)) {
+    $guesser = MimeTypeGuesser::getInstance();
+    $mimeType = $guesser->guess($file->getPathname());
+    if (!$file || !in_array($mimeType , $allowedMimeTypes)) {
         return response()->json(['error' => true, 'message' => 'Invalid file type.']);
     }
 
