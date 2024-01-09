@@ -20,57 +20,41 @@ use Illuminate\Support\Facades\Validator;
 
 class NftController extends BaseController
 {
+
     public function postUploadNft(Request $request)
     {
-        if (! RvMedia::isChunkUploadEnabled()) {
-            $result = RvMedia::handleUpload(Arr::first($request->file('filepond')), $request->input('folder_id', 0));
+        $this->validate($request, [
+            'file' => 'required|file|mimetypes:image/*,video/*,application/octet-stream' // Add specific MIME types for 3D files
+        ]);
 
-            return $this->handleUploadResponse($result);
-        }
+        $file = $request->file('file');
+        $folderPath = '/nfts/';
+        $optimizedFilePath = $folderPath . 'optimized_' . $file->getClientOriginalName();
+        $reducedFilePath = $folderPath . 'reduced_' . $file->getClientOriginalName();
 
         try {
-            // Create the file receiver
-            $receiver = new FileReceiver('filepond', $request, DropZoneUploadHandler::class);
-            // Check if the upload is success, throw exception or return response you need
-            if ($receiver->isUploaded() === false) {
-                throw new UploadMissingFileException();
+            if ($this->isImage($file)) {
+                // Handle image optimization
+                $image = Image::make($file->getRealPath());
+                $image->resize($image->width() * 0.5, $image->height() * 0.5)->save(storage_path('app/public' . $optimizedFilePath));
+                $image->resize($image->width() * 0.2, $image->height() * 0.2)->save(storage_path('app/public' . $reducedFilePath));
+            } else {
+                // For non-image files (videos, 3D files, GIFs), you might need different handling
+                Storage::disk('public')->put($optimizedFilePath, file_get_contents($file));
+                // Apply any required optimization or resizing for other file types here
             }
-            // Receive the file
-            $save = $receiver->receive();
-            // Check if the upload has finished (in chunk mode it will send smaller files)
-            if ($save->isFinished()) {
-                $result = RvMedia::handleUpload($save->getFile(), $request->input('folder_id', 0));
 
-                return $this->handleUploadResponse($result);
-            }
-            // We are in chunk mode, lets send the current progress
-            $handler = $save->handler();
-
-            return response()->json([
-                'done' => $handler->getPercentageDone(),
-                'status' => true,
-            ]);
-        } catch (Exception $exception) {
-            return RvMedia::responseError($exception->getMessage());
+            return response()->json(['success' => true, 'message' => 'File uploaded successfully']);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => 'File upload failed: ' . $e->getMessage()]);
         }
-
-
     }
 
-    protected function handleUploadResponse(array $result): JsonResponse
+    private function isImage($file)
     {
-        if (! $result['error']) {
-            return RvMedia::responseSuccess([
-                'id' => $result['data']->id,
-                'src' => RvMedia::url($result['data']->url),
-            ]);
-        }
+        return in_array($file->getClientMimeType(), ['image/jpeg', 'image/png', 'image/gif']);
+    }
 
-        return RvMedia::responseError($result['message']);
+
     }
-    public function deploy(){
-        // Make sure this path points to the git directory in your cPanel
-        $output = shell_exec('cd /home/ingressdefi/public_html && git pull 2>&1');
-        return "<pre>$output</pre>";
-    }
-}
+
