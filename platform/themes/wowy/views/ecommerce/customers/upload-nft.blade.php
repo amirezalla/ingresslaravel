@@ -7,7 +7,6 @@
             <!-- Drag and Drop Area -->
             <div class="border d-flex justify-content-center align-items-center" style="height: 200px;">
             <input type="file" class="filepond" name="filepond" id="filepond" />
-            <p>{{ csrf_token() }}</p>
         </div>
         </div>
         <div class="col-md-6">
