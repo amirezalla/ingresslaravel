@@ -93,7 +93,7 @@
                                                     <li><a href='/customer/upload-nft' class='userNavigation'>Upload Nft</a></li>
 
                                                     @else
-                                                    <li><button class='userNavigation btn_ingress' id='connectButton'>Connect</button></li>
+                                                    <li><button class='userNavigation ' id='connectButton'>Connect</button></li>
                                                 @endif
                                             @endif
                                         </ul>
