@@ -6,7 +6,7 @@
     }
     $headerStyle = ($headerStyle && in_array($headerStyle, array_keys(get_layout_header_styles()))) ? $headerStyle : '';
 @endphp
-<section class="featured section-padding-60">
+<section class="featured section-padding-60" style="background:rgb(20, 36, 66)">
     <div class="container">
         <div class="row">
             @for ($i = 1; $i <= 5; $i++)
