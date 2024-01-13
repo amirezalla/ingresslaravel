@@ -4670,7 +4670,8 @@ header.header-area .sticky-bar:not(.stick) .main-categories-wrap>a.cant-close>i 
 }
 
 .search-style-1 {
-    margin-right: 28px
+    margin-right: 28px;
+    background-color: transparent !important;
 }
 
 .search-style-1 form input::-moz-input-placeholder {
@@ -4945,7 +4946,7 @@ header.header-area .sticky-bar:not(.stick) .main-categories-wrap>a.cant-close>i 
 }
 
 .search-style-2 form input {
-    background:transparent;
+    background:transparent !important;
     border: 2px solid #eee;
     border-radius: 0 26px 26px 0;
     color: #444;
