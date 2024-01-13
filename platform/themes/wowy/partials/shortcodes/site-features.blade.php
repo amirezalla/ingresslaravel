@@ -17,7 +17,7 @@
                                 <img src="{{ RvMedia::getImageUrl($shortcode->{'icon' . $i}, null, false, RvMedia::getDefaultImage()) }}" alt="icon">
                             </div>
                             <div class="banner-text">
-                                <h3 class="icon-box-title">{!! BaseHelper::clean($shortcode->{'title' . $i}) !!}</h3>
+                                <h3 style="color: white" class="icon-box-title">{!! BaseHelper::clean($shortcode->{'title' . $i}) !!}</h3>
                                 <p>{!! BaseHelper::clean($shortcode->{'subtitle' . $i}) !!}</p>
                             </div>
                         </div>
