@@ -65,7 +65,7 @@
                             @endif
                         </div>
                         @if (is_plugin_active('ecommerce'))
-                            <div class="search-style-2">
+                            <div class="search-style-2" style="border: red">
                                 <form action="{{ route('public.products') }}" class="form--quick-search" data-ajax-url="{{ route('public.ajax.search-products') }}" method="get">
                                     <div class="form-group--icon">
                                         <div class="product-cat-label">{{ __('All Categories') }}</div>

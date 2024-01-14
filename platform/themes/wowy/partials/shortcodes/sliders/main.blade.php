@@ -13,7 +13,7 @@
         @endphp
         <section class="home-slider position-relative mt-30">
             @if(count($ads))
-                <div class="container">
+                <div class="container" style="background:rgb(20, 36, 66)">
                     <div class="row">
                         <div class="col-lg-9">
                             <div class="position-relative">
