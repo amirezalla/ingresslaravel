@@ -109,7 +109,7 @@ section {
 
 body {
     line-height: 1;
-    background: #1c1d1d !important;
+    background: rgb(20, 36, 66);
     color: white !important;
 }
 
