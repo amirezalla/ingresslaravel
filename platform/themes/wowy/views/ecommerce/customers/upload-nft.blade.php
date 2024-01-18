@@ -110,7 +110,9 @@
                     const auth = btoa(`${projectId}:${projectSecret}`);
                     // Upload to IPFS
                     fetch('https://ingressdefi.infura-ipfs.io:5001/api/v0/add', {
-
+                        headers: {
+                            'Authorization': `Basic ${auth}`,
+                        },
                         method: 'POST',
                         body: ipfsFormData
                     })
