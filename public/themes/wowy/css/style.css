@@ -10582,6 +10582,10 @@ footer {
     color: white !important;
 }
 
+.slick-initialized .slick-slide h1 {
+    color: #ff0076 !important;
+}
+
 .slick-initialized .slick-slide p {
     color: #938888 !important;
 }
