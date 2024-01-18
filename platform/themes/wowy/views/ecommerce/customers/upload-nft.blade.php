@@ -5,8 +5,12 @@
     <div class="container mt-20 mb-20">
     <div class="row">
         <div class="col-md-6">
-            <form id="uploadForm" action="/nft/uploadNftImage" method="post" enctype="multipart/form-data">
-                <input type="file" id="imageInput" name="filepond" accept="image/*">
+            <form id="uploadForm" class='file-upload-wrapper' action="/nft/uploadNftImage" method="post" enctype="multipart/form-data">
+                <input type="file" id="imageInput" class='file-upload-input' name="filepond" accept="image/*">
+                <i class="fa fa-upload"></i>
+                <div class="drag-text">
+                    Drag and drop your image here
+                </div>
                 @csrf
                 <img id="preview" src="#" alt="Image preview" style="display: none;">
             </form>

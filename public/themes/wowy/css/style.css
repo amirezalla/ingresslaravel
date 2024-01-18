@@ -10602,3 +10602,38 @@ input {
 #uploadForm {
     min-height: 300px !important;
 }
+
+#imageInput {
+    min-height: 300px !important;
+    border-radius: 7px;
+    background: transparent !important;
+}
+
+.file-upload-wrapper {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    border: 2px dashed #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.file-upload-wrapper:hover {
+    background-color: #f3f3f3;
+}
+
+.file-upload-input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.drag-text {
+    z-index: 1;
+}
