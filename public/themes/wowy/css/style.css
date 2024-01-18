@@ -10598,3 +10598,7 @@ footer {
 input {
     background: transparent !important;
 }
+
+#uploadForm {
+    min-height: 300px !important;
+}
