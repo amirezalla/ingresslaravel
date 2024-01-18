@@ -12,7 +12,7 @@
                     Drag and drop your image here
                 </div>
                 @csrf
-                <img id="preview" src="#" alt="Image preview" style="display: none;">
+                <img id="preview" src="#" alt="Image preview" style="display: none; max-height: 270px;">
             </form>
         </div>
         <div class="col-md-6">
