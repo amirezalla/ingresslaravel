@@ -105,14 +105,12 @@
                             Swal.showLoading();
                         },
                     });
-                    const projectId = 'amir'; // Replace with your Infura Project ID
+                    const projectId = '2LgfAX8FhCBfZ5UmJymQh5FTcq2'; // Replace with your Infura Project ID
                     const projectSecret = '6b2582086ac5ea2d15891314e0462603'; // Replace with your Infura Project Secret
                     const auth = btoa(`${projectId}:${projectSecret}`);
                     // Upload to IPFS
-                    fetch('https://ipfs.infura.io:5001/api/v0/add', {
-                        headers: {
-                            'Authorization': `Basic ${auth}`,
-                        },
+                    fetch('https://ingressdefi.infura-ipfs.io:5001/api/v0/add', {
+
                         method: 'POST',
                         body: ipfsFormData
                     })
