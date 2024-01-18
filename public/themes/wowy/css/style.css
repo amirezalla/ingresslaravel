@@ -10611,8 +10611,7 @@ input {
 
 .file-upload-wrapper {
     position: relative;
-    width: 300px;
-    height: 200px;
+    height: 270px;
     border: 2px dashed #000;
     display: flex;
     align-items: center;
@@ -10621,7 +10620,7 @@ input {
 }
 
 .file-upload-wrapper:hover {
-    background-color: #f3f3f3;
+    background-color: rgb(17 40 79);
 }
 
 .file-upload-input {
