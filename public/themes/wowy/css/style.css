@@ -10594,3 +10594,7 @@ footer {
 .slick-initialized .slick-slide p {
     color: #938888 !important;
 }
+
+input {
+    background: transparent !important;
+}
