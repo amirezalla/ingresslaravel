@@ -21,7 +21,7 @@
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Name of your artwork">
                 </div>
-                <input type="hidden" id="hiddenImageurl" name="hiddenImageurl" value="">
+                <input type="hidden" id="hiddenImageurl" name="hiddenImageurl" value="">                
                 <div class="form-group">
                     <select class="form-control">
                         <option selected>Category</option>
@@ -64,7 +64,7 @@
 
 <script>
         // JavaScript to handle image preview
-        document.getElementById('imageInput').addEventListener('change', function(event) {
+        document.getElementById('imageInput').addEventListener('change', async function(event) {
         if (event.target.files.length > 0) {
             var file = event.target.files[0];
 
@@ -91,37 +91,91 @@
                     iconUpload.style.display='none';
                 };
                 reader.readAsDataURL(files[0]);
-            }
+                reader.onloadend=function() {
+                    // Convert image to binary data
+                    var ipfsFormData = new FormData();
+                    ipfsFormData.append("file", new Blob([reader.result], { type: file.type }), file.name);
 
-            // Prepare form data
-            var formData = new FormData();
-            formData.append('filepond', file);
+                    // Show alert that we are uploading to IPFS
+                    Swal.fire({
+                        title: 'Uploading to IPFS...',
+                        html: 'Please wait while we upload your file to IPFS',
+                        allowOutsideClick: false,
+                        onBeforeOpen: () => {
+                            Swal.showLoading();
+                        },
+                    });
+                    const projectId = 'amir'; // Replace with your Infura Project ID
+                    const projectSecret = '6b2582086ac5ea2d15891314e0462603'; // Replace with your Infura Project Secret
+                    const auth = btoa(`${projectId}:${projectSecret}`);
+                    // Upload to IPFS
+                    fetch('https://ipfs.infura.io:5001/api/v0/add', {
+                        headers: {
+                            'Authorization': `Basic ${auth}`,
+                        },
+                        method: 'POST',
+                        body: ipfsFormData
+                    })
+                    .then(response => response.json())
+                    .then(ipfsResult => {
+                        if(ipfsResult && ipfsResult.Hash) {
+                            Swal.update({
+                                title: 'IPFS Upload Complete!',
+                                html: 'Now uploading to server.',
+                                allowOutsideClick: false,
+                            });
 
-            var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+                            // Here, you can handle the IPFS hash. For example:
+                            // Store it in your database, or
+                            // Attach it to the form data you'll send to your server
+                            var formData = new FormData();
+                            formData.append('ipfsHash', ipfsResult.Hash);
+                            formData.append('filepond', file);
 
-            // AJAX request to server
-            fetch('/nft/uploadNftImage', {
-                method: 'POST',
-                body: formData,
-                headers: {
-                'X-CSRF-TOKEN': csrfToken
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                Swal.fire(
-                    'Uploaded!',
-                    'Your file has been uploaded successfully.',
-                    'success'
-                );
-            })
-            .catch(error => {
-                Swal.fire(
-                    'Error!',
-                    'There was a problem uploading your file.',
-                    'error'
-                );
-            });
+                            // Add other form data and continue with your existing process
+
+                            var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+                            
+                            // AJAX request to server
+                            fetch('/nft/uploadNftImage', {
+                                method: 'POST',
+                                body: formData,
+                                headers: {
+                                'X-CSRF-TOKEN': csrfToken
+                                }
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                Swal.fire(
+                                    'Uploaded!',
+                                    'Your file has been uploaded successfully.',
+                                    'success'
+                                );
+                            })
+                            .catch(error => {
+                                Swal.fire(
+                                    'Error!',
+                                    'There was a problem uploading your file.',
+                                    'error'
+                                );
+                            });
+
+                        } else {
+                            throw new Error('IPFS upload error');
+                        }
+                    })
+                    .catch(error => {
+                        Swal.fire(
+                            'Error!',
+                            'There was a problem uploading your file to IPFS.',
+                            'error'
+                        );
+                    });
+                };
+            }   
+
+            
         }
     });
     </script>
