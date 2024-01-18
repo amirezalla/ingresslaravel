@@ -22,6 +22,7 @@
                     <input type="text" class="form-control" placeholder="Name of your artwork">
                 </div>
                 <input type="hidden" id="hiddenImageurl" name="hiddenImageurl" value="">                
+                <input type="hidden" id="hiddenImageIpfs" name="hiddenImageIpfs" value="">                
                 <div class="form-group">
                     <select class="form-control">
                         <option selected>Category</option>
@@ -125,11 +126,12 @@
                                 allowOutsideClick: false,
                             });
 
+
                             // Here, you can handle the IPFS hash. For example:
                             // Store it in your database, or
                             // Attach it to the form data you'll send to your server
                             var formData = new FormData();
-                            formData.append('ipfsHash', ipfsResult.Hash);
+                            document.getElementById('hiddenImageIpfs').value = ipfsResult.Hash;
                             formData.append('filepond', file);
 
                             // Add other form data and continue with your existing process
@@ -147,6 +149,13 @@
                             })
                             .then(response => response.json())
                             .then(data => {
+                                if (data && data.path) {
+                                    // Set the value of the hidden input field with id 'hiddenImageUrl'
+                                    document.getElementById('hiddenImageUrl').value = data.path;
+                                } else {
+                                    // Handle the case where the JSON response does not contain 'path'
+                                    throw new Error('Path not found in response');
+                                }
                                 Swal.fire(
                                     'Uploaded!',
                                     'Your file has been uploaded successfully.',
