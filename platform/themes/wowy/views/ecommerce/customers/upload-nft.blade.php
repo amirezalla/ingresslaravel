@@ -7,8 +7,8 @@
         <div class="col-md-6">
             <form id="uploadForm" class='file-upload-wrapper' action="/nft/uploadNftImage" method="post" enctype="multipart/form-data">
                 <input type="file" id="imageInput" class='file-upload-input' name="filepond" accept="image/*">
-                <i class="fa fa-upload"></i>
-                <div class="drag-text">
+                <i class="fa fa-upload" id='icon-upload'></i>
+                <div class="drag-text" id='drag-text'>
                     Drag and drop your image here
                 </div>
                 @csrf
@@ -78,12 +78,17 @@
                 },
             });
             var preview = document.getElementById('preview');
+            var dragText = document.getElementById('drag-text');
+            var iconUpload = document.getElementById('icon-upload');
+
             var files = event.target.files;
             if (files && files[0]) {
                 var reader = new FileReader();
                 reader.onload = function(e) {
                     preview.src = e.target.result;
                     preview.style.display = 'block';
+                    dragText.style.display='none';
+                    iconUpload.style.display='none';
                 };
                 reader.readAsDataURL(files[0]);
             }
