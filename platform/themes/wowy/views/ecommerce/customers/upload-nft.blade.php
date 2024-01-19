@@ -149,6 +149,7 @@
                             })
                             .then(response => response.json())
                             .then(data => {
+                                console.log(data);
                                 if (data && data.path) {
                                     // Set the value of the hidden input field with id 'hiddenImageUrl'
                                     document.getElementById('hiddenImageUrl').value = data.path;
