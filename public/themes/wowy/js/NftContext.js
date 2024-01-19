@@ -115,6 +115,3 @@ fetchNFTs();
 
 
 
-
-// Adding event listener outside to avoid it being re-attached multiple times
-document.querySelector('#connectButton').addEventListener('click', connectMetaMask);
