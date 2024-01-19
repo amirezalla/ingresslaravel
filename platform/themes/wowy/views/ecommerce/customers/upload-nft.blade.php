@@ -152,10 +152,9 @@
                                 console.log(data.path);
                                 if (data && data.path) {
                                     // Set the value of the hidden input field with id 'hiddenImageUrl'
-                                    document.getElementById('hiddenImageUrl').value = data.path;
+                                    document.getElementById('hiddenImageurl').value = data.path;
                                 } else {
                                     // Handle the case where the JSON response does not contain 'path'
-                                    console.log('here');
                                     throw new Error('Path not found in response');
                                 }
                                 Swal.fire(
