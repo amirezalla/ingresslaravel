@@ -675,10 +675,10 @@ const fetchNFTs = async () => {
             "https://young-green-shard.bsc.discover.quiknode.pro/41042211bc2caac86bde50238efb62c4e2c88269/"
         );
 
-        const contract = fetchContract(provider);
 
+        const contract = fetchContract(provider);
+        console.log(contract);
         const data = await contract.fetchMarketItems();
-        console.log(data);
 
         for (const item of data) {
             const { tokenId } = item;
