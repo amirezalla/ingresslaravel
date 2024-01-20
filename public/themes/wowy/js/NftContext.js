@@ -110,7 +110,7 @@ const fetchNFTs = async () => {
 
 fetchNFTs();
 
-
+document.querySelector('#connectButton').addEventListener('click', connectMetaMask);
 
 
 
