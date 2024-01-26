@@ -70,7 +70,23 @@
                         @endif
                     </div>
                 </div>
-                <div class="bt-1 border-color-1 mt-15 mb-15"></div>
+                <div class="bt-1 border-color-1 mt-15 mb-15">
+                <div class="accordion">
+                <div class="accordion-item">
+                    <button id="accordion-button-1" aria-expanded="false"><span class="accordion-title">Details</span><span class="icon" aria-hidden="true"></span></button>
+                    <div class="accordion-content">
+                    <div class="detail-item"><strong>Category:</strong> Gaming</div>
+                    <div class="detail-item"><strong>Creator:</strong> Bitcoin-Art</div>
+                    <div class="detail-item"><strong>Owner:</strong> Anonymous-User-e6801</div>
+                    <div class="detail-item"><strong>Network:</strong> BNB Chain</div>
+                    <div class="detail-item"><strong>Contract Address:</strong> 0x98d8...a8df</div>
+                    <div class="detail-item"><strong>Token ID:</strong> 1356300000265</div>
+                    <div class="detail-item"><strong>Royalty Fee:</strong> 9.9%</div>
+                    <div class="detail-item"><strong>Platform Fee:</strong> 1%</div>
+                    </div>
+                </div>
+                </div>
+                </div>
                 <!-- <div class="short-desc mb-30">
                     {!! apply_filters('ecommerce_before_product_description', null, $product) !!}
                     {!! BaseHelper::clean($product->description) !!}
@@ -369,6 +385,19 @@
 
 
 <script>
+
+document.addEventListener('click', function (e) {
+  if (e.target.id.startsWith('accordion-button-')) {
+    const currentButton = e.target;
+    const itemExpanded = currentButton.getAttribute('aria-expanded') === 'true';
+    currentButton.setAttribute('aria-expanded', !itemExpanded);
+    
+    const contentId = currentButton.getAttribute('aria-controls');
+    const content = document.getElementById(contentId);
+    content.style.maxHeight = itemExpanded ? '0px' : content.scrollHeight + 'px';
+  }
+});
+
     function fetchBNBPrice() {
     fetch('https://api.binance.com/api/v3/ticker/price?symbol=BNBUSDT')
         .then(response => response.json())

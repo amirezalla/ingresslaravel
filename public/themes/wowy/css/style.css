@@ -10650,3 +10650,62 @@ h6 {
     font-weight: 600;
     line-height: 1.2
 }
+
+
+.accordion {
+    max-width: 600px;
+    margin: auto;
+    border: 2px solid #ff0099;
+    border-radius: 8px;
+}
+
+.accordion-item {
+    background-color: #333;
+    border-bottom: 1px solid #ff0099;
+}
+
+#accordion-button-1 {
+    background-color: #222;
+    color: #fff;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: background-color 0.6s ease;
+    border-radius: 8px 8px 0 0;
+}
+
+#accordion-button-1:hover,
+#accordion-button-1:focus {
+    background-color: #ff0099;
+}
+
+.accordion-title {
+    font-weight: bold;
+}
+
+.icon {
+    float: right;
+    transition: transform 0.6s ease;
+}
+
+[aria-expanded='true'] .icon {
+    transform: rotate(90deg);
+}
+
+.accordion-content {
+    background-color: #222;
+    overflow: hidden;
+    transition: max-height 0.6s ease;
+}
+
+.detail-item {
+    padding: 18px;
+    border-top: 1px solid #444;
+}
+
+.detail-item strong {
+    color: #ff0099;
+}
