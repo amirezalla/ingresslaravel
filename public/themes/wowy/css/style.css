@@ -10651,36 +10651,24 @@ h6 {
     line-height: 1.2
 }
 
-
-#accordion {
-    width: 100%;
-    max-width: 600px;
-    margin: auto;
-    background-color: #2c2c2c;
-    border-radius: 8px;
-}
-
-#accordion h3 {
+.accordion-button {
     background-color: #ff0099;
-    padding: 15px;
-    margin: 0;
-    font-size: 24px;
-    cursor: pointer;
-    border-radius: 8px 8px 0 0;
-}
-
-#accordion div {
+    color: white;
+  }
+  
+  .accordion-button:not(.collapsed) {
+    color: white;
+    background-color: #ff0099;
+  }
+  
+  .accordion-body {
     background-color: #333;
-    padding: 15px;
-    border: 1px solid #ff0099;
-    border-top: none;
-    border-radius: 0 0 8px 8px;
-}
-
-#accordion p {
-    margin: 10px 0;
-}
-
-#accordion strong {
-    color: #ff0099;
-}
+  }
+  
+  .accordion-button::after {
+    filter: invert(1);
+  }
+  
+  .accordion-header .accordion-button {
+    border: none;
+  }

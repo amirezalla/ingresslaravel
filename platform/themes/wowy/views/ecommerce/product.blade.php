@@ -71,17 +71,25 @@
                     </div>
                 </div>
                 <div class="bt-1 border-color-1 mt-15 mb-15">
-                <div id="accordion">
-  <h3>Details</h3>
-  <div>
-    <p><strong>Category:</strong> Gaming</p>
-    <p><strong>Creator:</strong> Bitcoin-Art</p>
-    <p><strong>Owner:</strong> Anonymous-User-e6801</p>
-    <p><strong>Network:</strong> BNB Chain</p>
-    <p><strong>Contract Address:</strong> 0x98d8...a8df</p>
-    <p><strong>Token ID:</strong> 1356300000265</p>
-    <p><strong>Royalty Fee:</strong> 9.9%</p>
-    <p><strong>Platform Fee:</strong> 1%</p>
+                <div class="accordion" id="productDetailsAccordion">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingDetails">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDetails" aria-expanded="true" aria-controls="collapseDetails">
+        Details
+      </button>
+    </h2>
+    <div id="collapseDetails" class="accordion-collapse collapse" aria-labelledby="headingDetails" data-bs-parent="#productDetailsAccordion">
+      <div class="accordion-body">
+        <p><strong>Category:</strong> Gaming</p>
+        <p><strong>Creator:</strong> Bitcoin-Art</p>
+        <p><strong>Owner:</strong> Anonymous-User-e6801</p>
+        <p><strong>Network:</strong> BNB Chain</p>
+        <p><strong>Contract Address:</strong> 0x98d8...a8df</p>
+        <p><strong>Token ID:</strong> 1356300000265</p>
+        <p><strong>Royalty Fee:</strong> 9.9%</p>
+        <p><strong>Platform Fee:</strong> 1%</p>
+      </div>
+    </div>
   </div>
 </div>
                 </div>
@@ -380,10 +388,9 @@
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="styles.css">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+
 <script>
 
 $(document).ready(function() {
