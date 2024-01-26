@@ -81,7 +81,7 @@
                 <form class="add-to-cart-form" method="POST" action="{{ route('public.cart.add-to-cart') }}">
                     @csrf
 
-                    @if ($product->variations()->count() > 0)
+                    <!-- @if ($product->variations()->count() > 0)
                         <div class="pr_switch_wrap">
                             {!! render_product_swatches($product, [
                                 'selected' => $selectedAttrs,
@@ -95,7 +95,7 @@
                         </div>
                     @endif
 
-                    {!! render_product_options($product) !!}
+                    {!! render_product_options($product) !!} -->
 
                     {!! apply_filters(ECOMMERCE_PRODUCT_DETAIL_EXTRA_HTML, null, $product) !!}
                     <input type="hidden" name="id" class="hidden-product-id" value="{{ ($product->is_variation || !$product->defaultVariation->product_id) ? $product->id : $product->defaultVariation->product_id }}"/>
@@ -108,7 +108,7 @@
                             </div>
                         @endif -->
 
-                        <<div class="product-extra-link2 @if (EcommerceHelper::isQuickBuyButtonEnabled()) has-buy-now-button @endif">
+                        <div class="product-extra-link2 col-12 @if (EcommerceHelper::isQuickBuyButtonEnabled()) has-buy-now-button @endif">
                         <button class="button button-buy-now ms-2 @if ($product->isOutOfStock()) btn-disabled @endif col-12" type="submit" name="checkout" @if ($product->isOutOfStock()) disabled @endif style='background-color:#ff0076'>{{ __('Buy Now') }}</button>
 
                             <!-- @if (EcommerceHelper::isCartEnabled())
