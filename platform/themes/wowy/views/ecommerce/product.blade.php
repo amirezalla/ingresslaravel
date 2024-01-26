@@ -373,7 +373,10 @@
         .then(response => response.json())
         .then(data => {
             console.log('BNB Price in USDT:', data.price);  
-            document.getElementById('usdtPrice').innerText = {{ $product->front_sale_price_with_taxes }} * data.price;
+            var productPrice = {{ $product->front_sale_price_with_taxes }}; // Replace this with your actual backend variable
+            var bnbPrice = parseFloat(data.price);
+            var total = productPrice * bnbPrice;
+            document.getElementById('usdtPrice').innerText = '≈' + total.toFixed(2) + 'USDT';
 
 
         })
