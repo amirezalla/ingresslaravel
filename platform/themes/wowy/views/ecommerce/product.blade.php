@@ -386,16 +386,13 @@
 
 <script>
 
-document.addEventListener('click', function (e) {
-  if (e.target.id.startsWith('accordion-button-')) {
-    const currentButton = e.target;
-    const itemExpanded = currentButton.getAttribute('aria-expanded') === 'true';
-    currentButton.setAttribute('aria-expanded', !itemExpanded);
-    
-    const contentId = currentButton.getAttribute('aria-controls');
-    const content = document.getElementById(contentId);
-    content.style.maxHeight = itemExpanded ? '0px' : content.scrollHeight + 'px';
-  }
+$(document).ready(function() {
+  $("#accordion").accordion({
+    collapsible: true,
+    active: false,
+    heightStyle: "content",
+    header: "h3"
+  });
 });
 
     function fetchBNBPrice() {

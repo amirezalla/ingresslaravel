@@ -10652,60 +10652,35 @@ h6 {
 }
 
 
-.accordion {
+#accordion {
+    width: 100%;
     max-width: 600px;
     margin: auto;
-    border: 2px solid #ff0099;
+    background-color: #2c2c2c;
     border-radius: 8px;
 }
 
-.accordion-item {
-    background-color: #333;
-    border-bottom: 1px solid #ff0099;
-}
-
-#accordion-button-1 {
-    background-color: #222;
-    color: #fff;
+#accordion h3 {
+    background-color: #ff0099;
+    padding: 15px;
+    margin: 0;
+    font-size: 24px;
     cursor: pointer;
-    padding: 18px;
-    width: 100%;
-    text-align: left;
-    border: none;
-    outline: none;
-    transition: background-color 0.6s ease;
     border-radius: 8px 8px 0 0;
 }
 
-#accordion-button-1:hover,
-#accordion-button-1:focus {
-    background-color: #ff0099;
+#accordion div {
+    background-color: #333;
+    padding: 15px;
+    border: 1px solid #ff0099;
+    border-top: none;
+    border-radius: 0 0 8px 8px;
 }
 
-.accordion-title {
-    font-weight: bold;
+#accordion p {
+    margin: 10px 0;
 }
 
-.icon {
-    float: right;
-    transition: transform 0.6s ease;
-}
-
-[aria-expanded='true'] .icon {
-    transform: rotate(90deg);
-}
-
-.accordion-content {
-    background-color: #222;
-    overflow: hidden;
-    transition: max-height 0.6s ease;
-}
-
-.detail-item {
-    padding: 18px;
-    border-top: 1px solid #444;
-}
-
-.detail-item strong {
+#accordion strong {
     color: #ff0099;
 }
