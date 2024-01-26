@@ -373,6 +373,8 @@
         .then(response => response.json())
         .then(data => {
             console.log('BNB Price in USDT:', data.price);
+            document.getElementById('usdtPrice').innerText = {{ $product->front_sale_price_with_taxes }} * data.price;
+
 
         })
         .catch(error => {
