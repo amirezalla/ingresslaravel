@@ -71,21 +71,19 @@
                     </div>
                 </div>
                 <div class="bt-1 border-color-1 mt-15 mb-15">
-                <div class="accordion">
-                <div class="accordion-item">
-                    <button id="accordion-button-1" aria-expanded="false"><span class="accordion-title">Details</span><span class="icon" aria-hidden="true"></span></button>
-                    <div class="accordion-content">
-                    <div class="detail-item"><strong>Category:</strong> Gaming</div>
-                    <div class="detail-item"><strong>Creator:</strong> Bitcoin-Art</div>
-                    <div class="detail-item"><strong>Owner:</strong> Anonymous-User-e6801</div>
-                    <div class="detail-item"><strong>Network:</strong> BNB Chain</div>
-                    <div class="detail-item"><strong>Contract Address:</strong> 0x98d8...a8df</div>
-                    <div class="detail-item"><strong>Token ID:</strong> 1356300000265</div>
-                    <div class="detail-item"><strong>Royalty Fee:</strong> 9.9%</div>
-                    <div class="detail-item"><strong>Platform Fee:</strong> 1%</div>
-                    </div>
-                </div>
-                </div>
+                <div id="accordion">
+  <h3>Details</h3>
+  <div>
+    <p><strong>Category:</strong> Gaming</p>
+    <p><strong>Creator:</strong> Bitcoin-Art</p>
+    <p><strong>Owner:</strong> Anonymous-User-e6801</p>
+    <p><strong>Network:</strong> BNB Chain</p>
+    <p><strong>Contract Address:</strong> 0x98d8...a8df</p>
+    <p><strong>Token ID:</strong> 1356300000265</p>
+    <p><strong>Royalty Fee:</strong> 9.9%</p>
+    <p><strong>Platform Fee:</strong> 1%</p>
+  </div>
+</div>
                 </div>
                 <!-- <div class="short-desc mb-30">
                     {!! apply_filters('ecommerce_before_product_description', null, $product) !!}
@@ -382,7 +380,7 @@
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-                                                
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 <script>
