@@ -3747,8 +3747,8 @@ table .product-thumbnail img {
     line-height: 1
 }
 
-.detail-info .product-price-cover .product-price {
-    color: white;
+.detail-info .product-price-cover .product-price span {
+    color: white !important;
 }
 
 
