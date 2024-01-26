@@ -1,4 +1,4 @@
-<div class="page-header breadcrumb-wrap">
+<!-- <div class="page-header breadcrumb-wrap">
     <div class="container">
         <div class="breadcrumb">
             @foreach ($crumbs = Theme::breadcrumb()->getCrumbs() as $i => $crumb)
@@ -19,4 +19,4 @@
             @endforeach
         </div>
     </div>
-</div>
+</div> -->
