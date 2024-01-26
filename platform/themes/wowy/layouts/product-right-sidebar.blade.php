@@ -12,14 +12,14 @@
     <section class="mt-60 mb-60">
         <div class="container">
             <div class="row">
-                <div class="col-lg-9">
+                <div class="col-lg-12">
                     {!! Theme::content() !!}
                 </div>
-                <div class="col-lg-3 primary-sidebar sticky-sidebar">
+                <!-- <div class="col-lg-3 primary-sidebar sticky-sidebar">
                     <div class="widget-area">
                         {!! dynamic_sidebar('product_sidebar') !!}
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
