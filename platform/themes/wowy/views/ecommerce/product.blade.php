@@ -60,7 +60,7 @@
                 </div> -->
                 <div class="clearfix product-price-cover">
                     <div class="product-price primary-color float-left">
-                        <ins><span class="text-brand">{{ format_price($product->front_sale_price_with_taxes) }}</span> ≈ <div id="usdtPrice">Loading price...</div></ins>
+                        <ins><span class="text-brand">{{ format_price($product->front_sale_price_with_taxes) }}</span> <div id="usdtPrice" style='color:#a3a3a3;font-size:x-small'> ≈ Loading price...</div></ins>
                         @if ($product->front_sale_price !== $product->price)
                             <ins><span class="old-price font-md ml-15">{{ format_price($product->price_with_taxes) }}</span></ins>
                             <span class="save-price font-md color3 ml-15">
@@ -372,7 +372,7 @@
     fetch('https://api.binance.com/api/v3/ticker/price?symbol=BNBUSDT')
         .then(response => response.json())
         .then(data => {
-            console.log('BNB Price in USDT:', data.price);
+            console.log('BNB Price in USDT:', data.price);  
             document.getElementById('usdtPrice').innerText = {{ $product->front_sale_price_with_taxes }} * data.price;
 
 
