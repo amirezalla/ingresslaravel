@@ -42,7 +42,7 @@
             <div class="artworkArea mt-4 mb-4">
                 <div class="row">
                 <div class="col-7"><h5 class='OwnerProfileInProduct'>PicassoDefi</h5></div>
-                <div class='col-5' style='tex-align:end;'><span id='likeProduct'> 0 <i class="fas fa-heart" style='color:#a3a3a3;font-size:larger'></i></span></div>
+                <div class='col-5' style='text-align:end;'><span id='likeProduct'> 0 <i class="fas fa-heart" style='color:#a3a3a3;font-size:larger'></i></span></div>
                 </div>
 
             </div>
