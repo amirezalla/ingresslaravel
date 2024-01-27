@@ -197,7 +197,7 @@
 
         </div>
     </div>
-    <div class="tab-style3">
+    <!-- <div class="tab-style3">
         <ul class="nav nav-tabs text-uppercase">
             <li class="nav-item">
                 <a class="nav-link active" id="Description-tab" data-bs-toggle="tab" href="#Description">{{ __('Description') }}</a>
@@ -408,7 +408,7 @@
                 @include(Theme::getThemeNamespace() . '::views.ecommerce.includes.product-item', ['product' => $relatedProduct])
             </div>
         @endforeach
-    </div>
+    </div> -->
 </div>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
