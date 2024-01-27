@@ -70,7 +70,7 @@
                         @endif
                     </div>
                 </div>
-                <div class="bt-1 border-color-1 mt-15 mb-15">
+                <div class="mt-15 mb-15">
                 <div class="accordion" id="productDetailsAccordion">
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingDetails">
