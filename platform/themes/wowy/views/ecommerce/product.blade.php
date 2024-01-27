@@ -35,7 +35,7 @@
                 <div class="col-7"><h5 class='OwnerProfileInProduct'>PicassoDefi</h5></div>
                 <div class='col-5' style='text-align:end;'>
                     <span id='likeProduct'> 0 <i class="fas fa-heart" style='color:#a3a3a3;font-size:larger'></i></span> 
-                    <span><i class="fa fa-share-alt ml-5" style='color:#a3a3a3;font-size:larger'></i></span>
+                    <span id='shareProduct'><i class="fa fa-share-alt ml-5" style='color:#a3a3a3;font-size:larger'></i></span>
                 </div>
                 </div>
 

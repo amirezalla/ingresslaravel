@@ -10699,3 +10699,9 @@ h6 {
     color: #ff0076;
     text-decoration: underline;
 }
+
+.shareProduct,
+.likeProduct {
+    cursor: pointer;
+
+}
