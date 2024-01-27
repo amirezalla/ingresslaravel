@@ -99,7 +99,7 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingDetails">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDetails" aria-expanded="true" aria-controls="collapseDetails">
-                        <i class="fa-solid fa-file-lines"></i> Description
+                        <i class="fa-solid fa-file-lines"></i> &nbsp Description
                         </button>
                         </h2>
                         <div id="collapseDetails" class="accordion-collapse collapse" aria-labelledby="headingDetails" data-bs-parent="#productDescAccordion">
