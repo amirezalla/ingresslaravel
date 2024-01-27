@@ -7,6 +7,7 @@
     Theme::asset()->container('footer')->usePath()
         ->add('lightGallery-js', 'plugins/lightGallery/js/lightgallery.min.js', ['jquery']);
 @endphp
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
 <div class="product-detail accordion-detail">
     <div class="row mb-50">

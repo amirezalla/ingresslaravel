@@ -10691,5 +10691,6 @@ h6 {
 }
 
 .accordion-item {
+    border: none;
     background-color: transparent !important;
 }
