@@ -10687,7 +10687,7 @@ h6 {
 }
 
 .accordion-button:focus {
-    border: none;
+    box-shadow: none;
 }
 
 .accordion-item {
