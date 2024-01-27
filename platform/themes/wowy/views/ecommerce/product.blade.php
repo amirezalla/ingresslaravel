@@ -28,21 +28,15 @@
                     @endforeach
                 </div> -->
             </div>
-            <div class="single-social-share clearfix mt-50 mb-15">
-                <p class="mb-15 mt-30 font-sm"> <i class="fa fa-share-alt mr-5"></i> <span class="d-inline-block">{{ __('Share this') }}</span></p>
-                <div class="mobile-social-icon wow fadeIn  mb-sm-5 mb-md-0 animated">
-                    <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->current()) }}" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    <a class="twitter" href="https://twitter.com/intent/tweet?url={{ urlencode(url()->current()) }}&text={{ strip_tags(strip_tags(SeoHelper::getDescription())) }}" target="_blank"><i class="fab fa-twitter"></i></a>
-                    <a class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url={{ urlencode(url()->current()) }}&summary={{ rawurldecode(strip_tags(SeoHelper::getDescription())) }}" target="_blank"><i class="fab fa-linkedin"></i></a>
-                </div>
-            </div>
-            <a class="mail-to-friend font-sm color-grey" href="mailto:someone@example.com?subject={{ __('Buy') }} {{ $product->name }}&body={{ __('Buy this one: :link', ['link' => $product->url]) }}"><i class="far fa-envelope"></i> {{ __('Email to a Friend') }}</a>
         </div>
         <div class="col-md-7 col-sm-12 col-xs-12">
             <div class="artworkArea mt-4 mb-4">
                 <div class="row">
                 <div class="col-7"><h5 class='OwnerProfileInProduct'>PicassoDefi</h5></div>
-                <div class='col-5' style='text-align:end;'><span id='likeProduct'> 0 <i class="fas fa-heart" style='color:#a3a3a3;font-size:larger'></i></span></div>
+                <div class='col-5' style='text-align:end;'>
+                    <span id='likeProduct'> 0 <i class="fas fa-heart" style='color:#a3a3a3;font-size:larger'></i></span> 
+                    <span><i class="fa fa-share-alt ml-5" style='color:#a3a3a3;font-size:larger'></i></span>
+                </div>
                 </div>
 
             </div>
