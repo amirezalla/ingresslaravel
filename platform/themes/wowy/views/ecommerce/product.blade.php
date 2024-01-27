@@ -75,7 +75,7 @@
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingDetails">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDetails" aria-expanded="true" aria-controls="collapseDetails">
-        Details
+      <i class="fa-solid fa-file"></i> Details
       </button>
     </h2>
     <div id="collapseDetails" class="accordion-collapse collapse" aria-labelledby="headingDetails" data-bs-parent="#productDetailsAccordion">
@@ -392,15 +392,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
 
 <script>
-
-$(document).ready(function() {
-  $("#accordion").accordion({
-    collapsible: true,
-    active: false,
-    heightStyle: "content",
-    header: "h3"
-  });
-});
 
     function fetchBNBPrice() {
     fetch('https://api.binance.com/api/v3/ticker/price?symbol=BNBUSDT')
