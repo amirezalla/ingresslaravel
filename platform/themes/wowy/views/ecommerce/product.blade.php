@@ -22,11 +22,11 @@
                         </figure>
                     @endforeach
                 </div>
-                <div class="slider-nav-thumbnails pl-15 pr-15">
+                <!-- <div class="slider-nav-thumbnails pl-15 pr-15">
                     @foreach ($productImages as $img)
                         <div><img src="{{ RvMedia::getImageUrl($img, 'thumb') }}" alt="{{ $product->name }}"></div>
                     @endforeach
-                </div>
+                </div> -->
             </div>
             <div class="single-social-share clearfix mt-50 mb-15">
                 <p class="mb-15 mt-30 font-sm"> <i class="fa fa-share-alt mr-5"></i> <span class="d-inline-block">{{ __('Share this') }}</span></p>
@@ -111,6 +111,8 @@
                     </div>
                     </div>
                 </div>
+                <div><span class="d-inline-block me-1">{{ __('Availability') }}:</span> <span class="in-stock text-success ml-5">{!! BaseHelper::clean($product->stock_status_html) !!}</span></div>
+
                 
                 <!-- <div class="short-desc mb-30">
                     {!! apply_filters('ecommerce_before_product_description', null, $product) !!}
@@ -167,7 +169,7 @@
                         </div>
                     </div>
                 </form>
-                <ul class="product-meta font-xs color-grey mt-50">
+                <!-- <ul class="product-meta font-xs color-grey mt-50">
 
                     <li class="mb-5 @if (! $product->sku) d-none @endif"><span class="d-inline-block me-1" id="product-sku">{{ __('SKU') }}</span>: <span>{{ $product->sku }}</span></li>
 
@@ -187,7 +189,7 @@
                     @endif
 
                     <li><span class="d-inline-block me-1">{{ __('Availability') }}:</span> <span class="in-stock text-success ml-5">{!! BaseHelper::clean($product->stock_status_html) !!}</span></li>
-                </ul>
+                </ul> -->
             </div>
             <!-- Detail Info -->
 
