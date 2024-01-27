@@ -98,11 +98,11 @@
                 <div class="accordion" id="productDescAccordion">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingDetails">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDetails" aria-expanded="true" aria-controls="collapseDetails">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDetails1" aria-expanded="true" aria-controls="collapseDetails">
                         <i class="fa-solid fa-file-lines"></i> &nbsp Description
                         </button>
                         </h2>
-                        <div id="collapseDetails" class="accordion-collapse collapse" aria-labelledby="headingDetails" data-bs-parent="#productDescAccordion">
+                        <div id="collapseDetails1" class="accordion-collapse collapse" aria-labelledby="headingDetails" data-bs-parent="#productDescAccordion">
                         <div class="accordion-body">
                             <p><strong>400 x 400 px.IMAGE(576KB)</strong></p>
                             <p><strong>Ethereum pEPE aPE NFT</strong></p>
