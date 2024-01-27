@@ -39,8 +39,11 @@
             <a class="mail-to-friend font-sm color-grey" href="mailto:someone@example.com?subject={{ __('Buy') }} {{ $product->name }}&body={{ __('Buy this one: :link', ['link' => $product->url]) }}"><i class="far fa-envelope"></i> {{ __('Email to a Friend') }}</a>
         </div>
         <div class="col-md-7 col-sm-12 col-xs-12">
+            <div class="artworkArea mt-4 mb-4">
+                <div class="col-7"><h5 class='OwnerProfileInProduct'>PicassoDefi</h5></div>
+                <divc class='col-5'><span id='likeProduct'> 0 <i class="fas fa-heart" style='color:#a3a3a3'></i></span></div>
+            </div>
             <div class="detail-info">
-                <h5 class='OwnerProfileInProduct'>PicassoDefi</h5>
                 <h2 class="title-detail">{{ $product->name }}</h2>
                 <!-- <div class="product-detail-rating">
                     @if ($product->brand->id)
