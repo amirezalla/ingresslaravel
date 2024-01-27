@@ -111,7 +111,8 @@
                     </div>
                     </div>
                 </div>
-                <div><span class="d-inline-block me-1">{{ __('Availability') }}:</span> <span class="in-stock text-success ml-5">{!! BaseHelper::clean($product->stock_status_html) !!}</span></div>
+
+                <div class='mt-4'><span class="d-inline-block me-1">{{ __('Availability') }}:</span> <span class="in-stock text-success ml-5">{!! BaseHelper::clean($product->stock_status_html) !!}</span></div>
 
                 
                 <!-- <div class="short-desc mb-30">
