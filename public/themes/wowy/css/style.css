@@ -10654,29 +10654,42 @@ h6 {
 .accordion-button {
     background-color: transparent !important;
     color: white;
-    font-size: 0.9rem; /* Smaller font size */
+    font-size: 0.9rem;
+    /* Smaller font size */
     border: none;
     box-shadow: none;
-    padding-left: 0; /* Adjust as needed */
-  }
-  
-  .accordion-button:not(.collapsed) {
+    padding-left: 0;
+    /* Adjust as needed */
+}
+
+.accordion-button:not(.collapsed) {
     color: white;
-  }
-  
-  .accordion-button::after {
-    display: none; /* Remove the default arrow icon */
-  }
-  
-  .accordion-body {
+}
+
+.accordion-button::after {
+    display: none;
+    /* Remove the default arrow icon */
+}
+
+.accordion-body {
     background-color: transparent;
-    border-top: 1px solid rgba(255, 255, 255, 0.125); /* Add a subtle divider */
-  }
-  
-  .accordion-header .accordion-button {
+    border-top: 1px solid rgba(255, 255, 255, 0.125);
+    /* Add a subtle divider */
+}
+
+.accordion-header .accordion-button {
     border: none;
-  }
-  
-  .fa-file {
-    margin-right: 0.5rem; /* Space between icon and text */
-  }
+}
+
+.fa-file {
+    margin-right: 0.5rem;
+    /* Space between icon and text */
+}
+
+.accordion-button:focus {
+    border: none;
+}
+
+.accordion-item {
+    background-color: transparent !important;
+}
