@@ -41,7 +41,7 @@
         <div class="col-md-7 col-sm-12 col-xs-12">
             <div class="artworkArea mt-4 mb-4">
                 <div class="col-7"><h5 class='OwnerProfileInProduct'>PicassoDefi</h5></div>
-                <divc class='col-5'><span id='likeProduct'> 0 <i class="fas fa-heart" style='color:#a3a3a3'></i></span></div>
+                <div class='col-5'><span id='likeProduct'> 0 <i class="fas fa-heart" style='color:#a3a3a3'></i></span></div>
             </div>
             <div class="detail-info">
                 <h2 class="title-detail">{{ $product->name }}</h2>
