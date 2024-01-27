@@ -72,28 +72,46 @@
                     </div>
                 </div>
                 <div class="mt-15 mb-15">
+
                 <div class="accordion" id="productDetailsAccordion">
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingDetails">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDetails" aria-expanded="true" aria-controls="collapseDetails">
-      <i class="fa-solid fa-file"></i> Details
-      </button>
-    </h2>
-    <div id="collapseDetails" class="accordion-collapse collapse" aria-labelledby="headingDetails" data-bs-parent="#productDetailsAccordion">
-      <div class="accordion-body">
-        <p><strong>Category:</strong> Gaming</p>
-        <p><strong>Creator:</strong> Bitcoin-Art</p>
-        <p><strong>Owner:</strong> Anonymous-User-e6801</p>
-        <p><strong>Network:</strong> BNB Chain</p>
-        <p><strong>Contract Address:</strong> 0x98d8...a8df</p>
-        <p><strong>Token ID:</strong> 1356300000265</p>
-        <p><strong>Royalty Fee:</strong> 9.9%</p>
-        <p><strong>Platform Fee:</strong> 1%</p>
-      </div>
-    </div>
-  </div>
-</div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingDetails">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDetails" aria-expanded="true" aria-controls="collapseDetails">
+                        <i class="fa-solid fa-file"></i> Details
+                        </button>
+                        </h2>
+                        <div id="collapseDetails" class="accordion-collapse collapse" aria-labelledby="headingDetails" data-bs-parent="#productDetailsAccordion">
+                        <div class="accordion-body">
+                            <p><strong>Category:</strong> Gaming</p>
+                            <p><strong>Creator:</strong> Bitcoin-Art</p>
+                            <p><strong>Owner:</strong> Anonymous-User-e6801</p>
+                            <p><strong>Network:</strong> BNB Chain</p>
+                            <p><strong>Contract Address:</strong> 0x98d8...a8df</p>
+                            <p><strong>Token ID:</strong> 1356300000265</p>
+                            <p><strong>Royalty Fee:</strong> 9.9%</p>
+                            <p><strong>Platform Fee:</strong> 1%</p>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
                 </div>
+                <div class="accordion" id="productDescAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingDetails">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDetails" aria-expanded="true" aria-controls="collapseDetails">
+                        <i class="fa-solid fa-file-lines"></i> Description
+                        </button>
+                        </h2>
+                        <div id="collapseDetails" class="accordion-collapse collapse" aria-labelledby="headingDetails" data-bs-parent="#productDescAccordion">
+                        <div class="accordion-body">
+                            <p><strong>400 x 400 px.IMAGE(576KB)</strong></p>
+                            <p><strong>Ethereum pEPE aPE NFT</strong></p>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                
                 <!-- <div class="short-desc mb-30">
                     {!! apply_filters('ecommerce_before_product_description', null, $product) !!}
                     {!! BaseHelper::clean($product->description) !!}
