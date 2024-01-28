@@ -49,13 +49,12 @@ class NftController extends BaseController
         
         $hashedName = $this->hashName($file);
         $originalPath = $file->storeAs('products', $hashedName, 'public');
-        
+
         $fullImagePath = Storage::disk('public')->path($originalPath);
 
         try {
             // Crop the image
             $croppedImage = $this->cropImage($fullImagePath);
-            echo 'Cropped image saved to: ' . $croppedImage;
         } catch (Exception $e) {
             echo 'Error: ' . $e->getMessage();
         }
