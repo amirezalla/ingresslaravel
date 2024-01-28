@@ -17,6 +17,8 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Botble\Ecommerce\Models\Product;
+use Botble\Ecommerce\Models\Customer;
 use Image; // Assuming you're using the Intervention Image library
 use FFMpeg; // If using an FFMpeg library for video processing
 use Symfony\Component\HttpFoundation\File\MimeType\MimeTypeGuesser;
@@ -80,8 +82,39 @@ class NftController extends BaseController
     }
 
 
-    public function MintedToImport(){
-        
+    public function MintedToImport(Request $request){
+        // Validate the request data
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'image' => 'required|string',
+            'seller_eth_address' => 'required|string',
+            'owner_eth_address' => 'required|string',
+            'nft_id' => 'required|integer',
+            // Add other validation rules as needed
+        ]);
+
+        // Find or create the seller and owner in the customer table
+        $seller = Customer::firstOrCreate(['eth_address' => $validatedData['seller_eth_address']]);
+        $owner = Customer::firstOrCreate(['eth_address' => $validatedData['owner_eth_address']]);
+
+        // Create a new product (NFT) and associate it with the seller and owner
+        $product = new Product();
+        $product->name = $validatedData['name'];
+        $product->description = $validatedData['description'];
+        $product->images = $validatedData['image']; // Assuming this is a URL or a path to the image
+        $product->created_by_id = $seller->id;
+        $product->owner_eth_address = $owner->eth_address;
+        $product->nft_id = $validatedData['nft_id'];
+        $product->status = 'pending'; // Assuming the default status is 'pending'
+        // Set other fields as needed
+        $product->save();
+
+        // Return a response, possibly the product info or a success message
+        return response()->json([
+            'message' => 'NFT imported successfully',
+            'product' => $product,
+        ], 201);
     }
 
     }
