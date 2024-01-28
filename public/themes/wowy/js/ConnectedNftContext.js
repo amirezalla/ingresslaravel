@@ -92,6 +92,15 @@ const fetchContract = async () => {
     );
 }
 
+async function fetchContract1() {
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
+    const abiResponse = await fetch('/themes/wowy/js/nft/NFTMarketplace.json');
+    const NFTMarketplaceABI = await abiResponse.json();
+    const contract = new ethers.Contract(NFTMarketplaceAddress, NFTMarketplaceABI, signer);
+    return contract;
+}
+
 
 
 
@@ -145,7 +154,7 @@ const MintNft = async () => {
                     });
 
                     var TokenURI = ipfsResult.Hash;
-                    const contract = await fetchContract();
+                    const contract = await fetchContract1();
                     var userAddress = getUserAddress();
                     contract.methods.mintNFT(TokenURI, 0, 1).send({ from: userAddress })
                         .on('receipt', (receipt) => {
