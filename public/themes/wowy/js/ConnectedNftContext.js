@@ -247,11 +247,12 @@ const MintNft = async () => {
                                 };
                                 var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
-                                // Make a POST request to your server to create a new product
-                                fetch('/nft/MintToImport', { // Replace with your actual API endpoint
+                                fetch('/nft/MintToImport', {
                                     method: 'POST',
                                     headers: {
-                                        'X-CSRF-TOKEN': csrfToken
+                                        'Content-Type': 'application/json', // This header is necessary
+                                        'Accept': 'application/json', // It's good to include this as well
+                                        'X-CSRF-TOKEN': csrfToken, // CSRF token for Laravel
                                     },
                                     body: JSON.stringify(productData)
                                 })
