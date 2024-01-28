@@ -82,7 +82,7 @@ class NftController extends BaseController
     }
 
 
-    public function MintedToImport(Request $request){
+    public function MintToImport(Request $request){
         // Validate the request data
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
