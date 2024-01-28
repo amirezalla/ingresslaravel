@@ -152,14 +152,10 @@ const MintNft = async () => {
                     var TokenURI = ipfsResult.Hash;
                     const contract = await fetchContract1();
                     console.log(contract);
-                    if (!contract.methods || !contract.methods.mintNFT) {
-                        console.error('mintNFT method not found in the contract');
-                        return;
-                    }
 
                     var userAddress = await getUserAddress(); // Correctly await the address
 
-                    contract.methods.mintNFT(TokenURI, 0, 1).send({ from: userAddress })
+                    contract.mintNFT(TokenURI, 0, 1).send({ from: userAddress })
                         .on('receipt', (receipt) => {
                             const nftMintedEvent = receipt.events.NFTMinted;
                             if (nftMintedEvent) {
