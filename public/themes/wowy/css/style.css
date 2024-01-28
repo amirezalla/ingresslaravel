@@ -10740,6 +10740,11 @@ h6 {
 
 }
 
+.card .card-header {
+    background-color: #ff0076 !important;
+    color: white;
+}
+
 .upload_nft_card input,
 .upload_nft_card textarea,
 .upload_nft_card select {
