@@ -17,7 +17,7 @@
         </div>
         <div class="col-md-6">
             <!-- Artwork Details Form -->
-                <div>
+                <div class='upload_nft_card'>
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Name of your artwork" id='artWorkName'>
                 </div>
