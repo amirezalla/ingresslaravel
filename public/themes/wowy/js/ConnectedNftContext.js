@@ -164,8 +164,8 @@ const MintNft = async () => {
             .catch(error => {
                 Swal.fire(
                     'Error!',
-                    'There was a problem uploading your file to IPFS.',
-                    error
+                    'There was a problem uploading your file to IPFS.' + error,
+                    'error'
                 );
             });
 
