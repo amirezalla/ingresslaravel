@@ -200,29 +200,36 @@ const MintNft = async () => {
             .then(response => response.json())
             .then(async ipfsResult => {
                 if (ipfsResult && ipfsResult.Hash) {
-
-                    console.log(ipfsResult.Hash);
-                    var TokenURI = "https://ingressdefi.infura-ipfs.io/ipfs/" + ipfsResult.Hash;
+                    const TokenURI = "https://ingressdefi.infura-ipfs.io/ipfs/" + ipfsResult.Hash;
                     const contract = await fetchContract1();
-                    console.log(contract);
+                    const userAddress = await getUserAddress(); // Ensure this is awaited properly
 
-                    var userAddress = await getUserAddress(); // Correctly await the address
-
-                    await contract.mintNFT(TokenURI, 0, 1).send({ from: userAddress })
-                        .on('receipt', (receipt) => {
-                            const nftMintedEvent = receipt.events.NFTMinted;
-                            if (nftMintedEvent) {
-                                const nftId = nftMintedEvent.returnValues.nftId;
-                                console.log("NFT Minted with ID:", nftId);
-                            }
-                        })
-                        .on('error', console.error);
+                    try {
+                        await contract.methods.mintNFT(TokenURI, 0, 1).send({ from: userAddress })
+                            .on('receipt', (receipt) => {
+                                const nftMintedEvent = receipt.events.NFTMinted;
+                                if (nftMintedEvent) {
+                                    const nftId = nftMintedEvent.returnValues.nftId;
+                                    console.log("NFT Minted with ID:", nftId);
+                                    // Add any UI updates or success messages here
+                                }
+                            });
+                    } catch (mintError) {
+                        console.error('Minting error:', mintError);
+                        Swal.fire(
+                            'Error!',
+                            'There was a problem minting your NFT: ' + mintError.message,
+                            'error'
+                        );
+                        return; // Prevent further execution in case of an error
+                    }
                 }
             })
             .catch(error => {
+                console.error('Error uploading to IPFS:', error);
                 Swal.fire(
                     'Error!',
-                    'There was a problem uploading your file to IPFS.' + error,
+                    'There was a problem uploading your file to IPFS: ' + error.message,
                     'error'
                 );
             });
