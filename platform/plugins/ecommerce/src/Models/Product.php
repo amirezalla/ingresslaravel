@@ -64,6 +64,9 @@ class Product extends BaseModel
         'barcode',
         'cost_per_item',
         'generate_license_code',
+        'seller_eth_address',
+        'owner_eth_address',
+        'nft_id'
     ];
 
     protected $appends = [
@@ -197,6 +200,17 @@ class Product extends BaseModel
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function seller()
+    {
+        return $this->belongsTo(Customer::class, 'seller_eth_address');
+    }
+
+    // The customer who owns the product
+    public function owner()
+    {
+        return $this->belongsTo(Customer::class, 'owner_eth_address', 'eth_address');
     }
 
     public function tags(): BelongsToMany

@@ -73,6 +73,17 @@ class Customer extends BaseModel implements
         $this->notify(new ConfirmEmailNotification());
     }
 
+    public function productsSelling()
+    {
+        return $this->hasMany(Product::class, 'seller_eth_address');
+    }
+
+    // Products that this customer owns
+    public function productsOwned()
+    {
+        return $this->hasMany(Product::class, 'owner_eth_address', 'eth_address');
+    }
+
     protected function avatarUrl(): Attribute
     {
         return Attribute::make(

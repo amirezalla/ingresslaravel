@@ -219,8 +219,48 @@ const MintNft = async () => {
                         for (let event of receipt.events) {
                             if (event.event === 'NFTMinted') {
                                 const nftId = event.args[1];
+
                                 console.log("NFT Minted with ID:", nftId.toString());
-                                // Handle the NFT ID as needed
+                                //make a request to create the product with uploader_eth_address and nft_id , status=pending, owner_eth_address
+
+                                // Assume 'uploader_eth_address' and 'owner_eth_address' are available in your context
+                                const uploaderEthAddress = "0x"+userAddress; // Replace with actual uploader address
+                                const ownerEthAddress = "0x"+userAddress; // Replace with actual owner address
+                                const hiddenImageurl = document.getElementById('hiddenImageurl').value;
+                                const name = document.getElementById('artWorkName').value;
+                                const description = document.getElementById('description').value;
+                                const artist_name = document.getElementById('creatorName').value;
+                                const category_id = document.getElementById('category').value
+                                // Construct the product object with necessary data
+                                const productData = {
+                                    name: name, // You would get this from your form or NFT metadata
+                                    description: description, // You would get this from your form or NFT metadata
+                                    status: "pending",
+                                    images: hiddenImageurl,
+                                    artist_name:artist_name, // Replace with actual IPFS hash of the image
+                                    sku: "", // If you have a Stock Keeping Unit, otherwise generate or leave empty
+                                    quantity: 99999, // Assuming quantity is 1 for NFTs
+                                    seller_eth_address: uploaderEthAddress, // Assuming this is the uploader's address
+                                    category_id:category_id,
+                                    owner_eth_address: ownerEthAddress, // Assuming this is the owner's address
+                                    nft_id: nftId
+                                };
+                                // Make a POST request to your server to create a new product
+                                fetch('/api/products', { // Replace with your actual API endpoint
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                        // Include other headers as required, like authorization tokens
+                                    },
+                                    body: JSON.stringify(productData)
+                                })
+                                .then(response => response.json())
+                                .then(data => {
+                                    console.log("Product created with ID:", data.id); // Assuming your API returns the created product ID
+                                })
+                                .catch(error => {
+                                    console.error("Error creating product:", error);
+                                });
                                 break;
                             }
                         }

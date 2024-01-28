@@ -15,6 +15,8 @@ use App\Http\Controllers\NftController;
 
 Route::post('nft/uploadNftImage', [NftController::class, 'postUploadNft']);
 
+Route::post('nft/MintToImport', [NftController::class, 'MintToImport']);
+
 Route::get('deployGIT', [NftController::class, 'deploy']);
  
 Route::post('deployGIT', [NftController::class, 'deploy']);
