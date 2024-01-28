@@ -147,15 +147,11 @@ const MintNft = async () => {
             .then(response => response.json())
             .then(async ipfsResult => {
                 if (ipfsResult && ipfsResult.Hash) {
-                    Swal.update({
-                        title: 'IPFS Upload Complete!',
-                        html: 'Now uploading to server.',
-                        allowOutsideClick: false,
-                    });
 
+                    console.log(ipfsResult.Hash);
                     var TokenURI = ipfsResult.Hash;
                     const contract = await fetchContract1();
-
+                    console.log(contract);
                     if (!contract.methods || !contract.methods.mintNFT) {
                         console.error('mintNFT method not found in the contract');
                         return;
