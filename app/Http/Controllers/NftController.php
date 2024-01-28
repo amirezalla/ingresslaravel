@@ -106,7 +106,16 @@ class NftController extends BaseController
         $product = new Product();
         $product->name = $request->name;
         $product->description = $request->description;
-        $product->images = json_encode([$request->image]);
+
+        $baseUrlToRemove = 'https://apingressdefi.com/storage/';
+        // Remove the base URL part from $request->image
+        $relativeImagePath = str_replace($baseUrlToRemove, '', $request->image);
+        
+        // Now $relativeImagePath contains 'products/24.jpg'
+        
+        // Store the relative path as an array in JSON format in the 'images' column
+        $product->images = json_encode([$relativeImagePath]);    
+            
         $product->seller_eth_address = $seller->eth_address;
         $product->owner_eth_address = $owner->eth_address;
         $nft_id_hex = $request->input('nft_id.hex'); // This will retrieve the hex value from the request
