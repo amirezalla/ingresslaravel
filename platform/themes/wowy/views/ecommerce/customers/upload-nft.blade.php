@@ -125,7 +125,7 @@
                             // Store it in your database, or
                             // Attach it to the form data you'll send to your server
                             var formData = new FormData();
-                            document.getElementById('hiddenImageIpfs').value = 'ipfs://'+ipfsResult.Hash;
+                            document.getElementById('hiddenImageIpfs').value = 'https://ingressdefi.infura-ipfs.io/ipfs/'+ipfsResult.Hash;
                             formData.append('filepond', file);
 
                             // Add other form data and continue with your existing process

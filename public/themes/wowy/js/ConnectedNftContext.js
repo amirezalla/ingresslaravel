@@ -202,7 +202,7 @@ const MintNft = async () => {
                 if (ipfsResult && ipfsResult.Hash) {
 
                     console.log(ipfsResult.Hash);
-                    var TokenURI = ipfsResult.Hash;
+                    var TokenURI = "https://ingressdefi.infura-ipfs.io/ipfs/" + ipfsResult.Hash;
                     const contract = await fetchContract1();
                     console.log(contract);
 
