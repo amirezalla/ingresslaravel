@@ -10759,3 +10759,13 @@ h6 {
 .nav-tabs .nav-link.active {
     color: #ff0076 !important;
 }
+
+.swal2-container .swal2-progress-steps .swal2-progress-step {
+    background-color: #ff0076 !important;
+    /* Change to your desired color */
+}
+
+.swal2-container .swal2-progress-steps .swal2-active-progress-step {
+    background-color: #ff0076 !important;
+    /* Change to your desired color */
+}
