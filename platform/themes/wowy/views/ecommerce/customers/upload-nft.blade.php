@@ -154,7 +154,7 @@
                                     // Handle the case where the JSON response does not contain 'path'
                                     throw new Error('Path not found in response');
                                 }
-                                Swal.fire(
+                                Swal.fire({
                                     'Uploaded!',
                                     'Your file has been uploaded successfully.',
                                     'success',
@@ -164,7 +164,7 @@
                                     didClose: () => {
                                         // Optional: handle the closing event
                                     } // This will hide the "OK" button
-                                    
+                                }   
                                 );
                             })
                             .catch(error => {
@@ -172,7 +172,6 @@
                                     'Error!',
                                     'There was a problem uploading your file.',
                                     'error',                        
-                                    showConfirmButton: false // This will hide the "OK" button.
 
                                 );
                             });
@@ -185,9 +184,7 @@
                         Swal.fire(
                             'Error!',
                             'There was a problem uploading your file to IPFS.',
-                            'error',
-                            showConfirmButton: false // This will hide the "OK" button.
-
+                            'error'
                         );
                     });
                 };
