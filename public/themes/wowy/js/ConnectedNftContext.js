@@ -159,14 +159,13 @@ const MintNft = async () => {
                         })
                         .on('error', console.error);
 
-                    var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
                 }
             })
             .catch(error => {
                 Swal.fire(
                     'Error!',
                     'There was a problem uploading your file to IPFS.',
-                    'error'
+                    error
                 );
             });
 
