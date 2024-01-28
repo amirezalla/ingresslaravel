@@ -4425,6 +4425,12 @@ h6.post-title {
     background: -o-linear-gradient(45deg, #590f87 0%, #ff0076 50%, #590f87 100%);
     background: linear-gradient(45deg, #590f87 0%, #ff0076 50%, #590f87 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#590f87', endColorstr='#590f87', GradientType=1);
+    transition: all 0.2s;
+}
+
+.btn_ingress:hover {
+    color: white;
+    background: #590f87;
 
 }
 
@@ -10732,7 +10738,13 @@ h6 {
     color: #212529;
 
 }
-.card-body col-md-12{
-    
+
+.btn_ingress {
+
+    background-color: #ddd;
+    color: #a9a9a9;
+    padding: 5px 12px;
+    border-radius: 50px;
+    border: none !important;
+
 }
-button.submit, button[type=submit]
