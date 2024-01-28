@@ -22,7 +22,6 @@ use Botble\Ecommerce\Models\OrderProduct;
 use Botble\Ecommerce\Models\OrderReturn;
 use Botble\Ecommerce\Models\Review;
 use Botble\Ecommerce\Repositories\Interfaces\ProductInterface;
-use Botble\Ecommerce\Repositories\Interfaces\ProductInterface;
 use Botble\Media\Facades\RvMedia;
 use Botble\Media\Services\ThumbnailService;
 use Botble\Media\Supports\Zipper;
