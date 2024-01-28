@@ -245,11 +245,14 @@ const MintNft = async () => {
                                     owner_eth_address: ownerEthAddress, // Assuming this is the owner's address
                                     nft_id: nftId
                                 };
+                                var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
                                 // Make a POST request to your server to create a new product
                                 fetch('/api/products', { // Replace with your actual API endpoint
                                     method: 'POST',
                                     headers: {
                                         'Content-Type': 'application/json',
+                                        'X-CSRF-TOKEN': csrfToken
                                         // Include other headers as required, like authorization tokens
                                     },
                                     body: JSON.stringify(productData)
@@ -265,7 +268,6 @@ const MintNft = async () => {
                             }
                         }
                     }
-
                 }
             })
             .catch(error => {
