@@ -171,13 +171,6 @@ const MintNft = async () => {
         };
         const metadataString = JSON.stringify(metadata);
 
-        // Convert the JSON string to a Blob
-        const metadataBlob = new Blob([metadataString], { type: 'application/json' });
-
-        // Create a new FormData object and append the metadata Blob to it
-        var ipfsFormData = new FormData();
-        ipfsFormData.append('file', metadataBlob);
-        
         // Show alert that we are uploading to IPFS
         Swal.fire({
             title: 'Generating Token URI',
@@ -196,7 +189,7 @@ const MintNft = async () => {
                 'Authorization': `Basic ${auth}`,
             },
             method: 'POST',
-            body: ipfsFormData
+            body: metadataString
         })
             .then(response => response.json())
             .then(async ipfsResult => {
