@@ -70,7 +70,7 @@
             <div class="col-lg-10 m-auto">
                 <div class="row">
                     <div class="col-md-12">
-                    <div class="row">
+                    <div class="row col-md-4">
                             <div class="col-4">
                                 <div class="profile-sidebar crop-avatar">
                                     <form id="avatar-upload-form" enctype="multipart/form-data" action="javascript:void(0)" onsubmit="return false">
