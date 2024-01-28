@@ -38,6 +38,8 @@ class NftController extends BaseController
         if (!$file) {
             return response()->json(['error' => true, 'message' => 'No file uploaded or file upload error.']);
         }
+        $fileSize = $file->getSize(); // Returns file size in bytes
+
     
         $extension = strtolower($file->getClientOriginalExtension());
         if (!in_array($extension, $allowedExtensions)) {
@@ -46,6 +48,7 @@ class NftController extends BaseController
     
         $hashedName = $this->hashName($file);
         $originalPath = $file->storeAs('products', $hashedName, 'public');
+        
     
         // dd($originalPath);
         // if (in_array($extension, ['jpeg', 'jpg', 'png', 'gif'])) {
@@ -56,6 +59,7 @@ class NftController extends BaseController
         $MediaFile->user_id=0;
         $MediaFile->name=$hashedName;
         $MediaFile->alt=$hashedName;
+        $MediaFile->size=$fileSize;
         $MediaFile->folder_id=3;
         $MediaFile->mime_type='image/'.strtolower($file->getClientOriginalExtension());
         $MediaFile->url='products/'.$hashedName;
