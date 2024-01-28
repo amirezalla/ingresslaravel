@@ -10704,3 +10704,20 @@ h6 {
 #likeProduct {
     cursor: pointer;
 }
+
+.card-header h5 {
+    color: #212529;
+}
+
+.dashboard-menu ul li .nav-link {
+
+    color: white;
+
+}
+
+.dashboard-menu ul li .active {
+
+
+    color: #ff0076;
+
+}
