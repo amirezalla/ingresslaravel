@@ -251,9 +251,7 @@ const MintNft = async () => {
                                 fetch('/nft/MintToImport', { // Replace with your actual API endpoint
                                     method: 'POST',
                                     headers: {
-                                        'Content-Type': 'application/json',
                                         'X-CSRF-TOKEN': csrfToken
-                                        // Include other headers as required, like authorization tokens
                                     },
                                     body: JSON.stringify(productData)
                                 })
