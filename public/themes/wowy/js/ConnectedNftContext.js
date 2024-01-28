@@ -169,9 +169,12 @@ const MintNft = async () => {
             image: document.getElementById('hiddenImageIpfs').value, // This should be a full IPFS path like "ipfs://<hash>"
             artist: document.getElementById('creatorName').value,
         };
-        const metadataString = JSON.stringify(metadata);
 
-        console.log(metadataString);
+        const metadataString = JSON.stringify(metadata);
+        const metadataBlob = new Blob([metadataString], { type: 'application/json' });
+        const formData = new FormData();
+        formData.append('file', metadataBlob); // 'file' is the field that the IPFS expects
+
         // Show alert that we are uploading to IPFS
         Swal.fire({
             title: 'Generating Token URI',
@@ -181,16 +184,18 @@ const MintNft = async () => {
                 Swal.showLoading();
             },
         });
+
         const projectId = '2LgfAX8FhCBfZ5UmJymQh5FTcq2'; // Replace with your Infura Project ID
         const projectSecret = '6b2582086ac5ea2d15891314e0462603'; // Replace with your Infura Project Secret
         const auth = btoa(`${projectId}:${projectSecret}`);
+
         // Upload to IPFS
         fetch('https://ingressdefi.infura-ipfs.io:5001/api/v0/add', {
             headers: {
                 'Authorization': `Basic ${auth}`,
             },
             method: 'POST',
-            body: metadataString
+            body: formData
         })
             .then(response => response.json())
             .then(async ipfsResult => {
