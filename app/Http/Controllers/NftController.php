@@ -46,7 +46,9 @@ class NftController extends BaseController
             return response()->json(['error' => true, 'message' => 'Invalid file type.']);
         }
     
-        $$fullImagePath = Storage::disk('public')->path($originalPath);
+        
+        $originalPath = $file->storeAs('products', $hashedName.'-150x150', 'public');
+        $fullImagePath = Storage::disk('public')->path($originalPath);
 
         try {
             // Crop the image
@@ -55,8 +57,6 @@ class NftController extends BaseController
         } catch (Exception $e) {
             echo 'Error: ' . $e->getMessage();
         }
-        $originalPath = $file->storeAs('products', $hashedName.'-150x150', 'public');
-        
     
         // dd($originalPath);
         // if (in_array($extension, ['jpeg', 'jpg', 'png', 'gif'])) {
