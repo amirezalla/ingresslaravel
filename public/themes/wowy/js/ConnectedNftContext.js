@@ -171,6 +171,7 @@ const MintNft = async () => {
         };
         const metadataString = JSON.stringify(metadata);
 
+        console.log(metadataString);
         // Show alert that we are uploading to IPFS
         Swal.fire({
             title: 'Generating Token URI',
