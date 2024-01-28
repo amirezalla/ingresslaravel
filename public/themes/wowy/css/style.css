@@ -10746,3 +10746,7 @@ h6 {
     background-color: white !important;
     color: #212529 !important;
 }
+
+.widget-title {
+    color: #212529 !important;
+}
