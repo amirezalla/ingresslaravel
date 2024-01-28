@@ -111,7 +111,7 @@ fetchNFTs();
 const MintNft = async () => {
     try {
         var ipfsFormData = new FormData();
-        ipfsFormData.append('name', document.getElementById('artworkName').value);
+        ipfsFormData.append('name', document.getElementById('artWorkName').value);
         ipfsFormData.append('description', document.getElementById('description').value);
         ipfsFormData.append('image', document.getElementById('hiddenImageIpfs').value);
         ipfsFormData.append('artist', document.getElementById('creatorName').value);
