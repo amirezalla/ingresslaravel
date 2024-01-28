@@ -10720,3 +10720,15 @@ h6 {
     background-color: #ff0076 !important;
 
 }
+
+.card-body label {
+
+    color: #212529 !important;
+
+}
+
+.card-body input {
+
+    color: #212529;
+
+}
