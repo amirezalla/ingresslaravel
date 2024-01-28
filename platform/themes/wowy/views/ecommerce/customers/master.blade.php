@@ -20,14 +20,14 @@
         ],
         [
             'key'   => 'customer.downloads',
-            'label' => __('Downloads'),
-            'icon'  => 'fa fa-shopping-basket',
+            'label' => __('Minted Nfts'),
+            'icon'  => 'fa fa-newspaper',
             'routes'    => ['customer.downloads'],
         ],
         [
             'key'    => 'customer.order_returns',
-            'label'  => __('Order return requests'),
-            'icon'   => 'fa  fa-cart-arrow-down',
+            'label'  => __('Listed'),
+            'icon'   => 'fa  fa-check',
             'routes' => ['customer.order_returns.view'],
         ],
         [

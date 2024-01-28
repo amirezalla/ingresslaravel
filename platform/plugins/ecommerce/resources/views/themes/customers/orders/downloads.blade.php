@@ -1,6 +1,7 @@
 @extends(EcommerceHelper::viewPath('customers.master'))
 @section('content')
-    <div class="section-header">
+Minted Nfts
+    <!-- <div class="section-header">
         <h3>{{ SeoHelper::getTitle() }}</h3>
     </div>
     <div class="section-content">
@@ -135,5 +136,5 @@
         <div class="pagination">
             {!! $orderProducts->links() !!}
         </div>
-    </div>
+    </div> -->
 @endsection

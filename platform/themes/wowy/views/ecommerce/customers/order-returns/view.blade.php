@@ -1,6 +1,6 @@
 @extends(Theme::getThemeNamespace() . '::views.ecommerce.customers.master')
 @section('content')
-    @php Theme::set('pageName', __('Request Return Product(s)')) @endphp
+    <!-- @php Theme::set('pageName', __('Request Return Product(s)')) @endphp
     <div class="card">
         <div class="card-header">
             <h4 class="mb-0">{{ __('Request Return Product(s)') }}</h4>
@@ -10,5 +10,6 @@
                 @include('plugins/ecommerce::themes.includes.order-return-form')
             </div>
         </div>
-    </div>
+    </div> -->
+    Listed NFTs
 @endsection
