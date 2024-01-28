@@ -205,23 +205,23 @@ const MintNft = async () => {
                     const userAddress = await getUserAddress(); // Ensure this is awaited properly
 
                     try {
-                        await contract.methods.mintNFT(TokenURI, 0, 1).send({ from: userAddress })
-                            .on('receipt', (receipt) => {
-                                const nftMintedEvent = receipt.events.NFTMinted;
-                                if (nftMintedEvent) {
-                                    const nftId = nftMintedEvent.returnValues.nftId;
-                                    console.log("NFT Minted with ID:", nftId);
-                                    // Add any UI updates or success messages here
-                                }
-                            });
-                    } catch (mintError) {
-                        console.error('Minting error:', mintError);
+                        const mintTx = await contract.mintNFT(TokenURI, 0, 1).send({ from: userAddress });
+                        // Listen for the confirmation or receipt
+                        mintTx.on('confirmation', (confirmationNumber, receipt) => {
+                            console.log('NFT minted:', receipt);
+                        }).on('receipt', (receipt) => {
+                            console.log('Receipt received:', receipt);
+                            // If the Swal is showing, close it
+                            Swal.close();
+                            // Process receipt
+                        });
+                    } catch (error) {
+                        // If the Swal is showing, update it with the error
                         Swal.fire(
                             'Error!',
-                            'There was a problem minting your NFT: ' + mintError.message,
+                            'There was a problem minting your NFT: ' + error.message,
                             'error'
                         );
-                        return; // Prevent further execution in case of an error
                     }
                 }
             })
