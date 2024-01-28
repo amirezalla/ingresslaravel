@@ -196,8 +196,8 @@ if (defined('THEME_MODULE_SCREEN_NAME')) {
                 'uses' => 'PublicController@postAvatar',
             ]);
 
-            Route::get('order-returns', [
-                'as' => 'order_returns',
+            Route::get('listed-nfts', [
+                'as' => 'listed_nfts',
                 'uses' => 'PublicController@getListReturnOrders',
             ]);
 
@@ -216,8 +216,8 @@ if (defined('THEME_MODULE_SCREEN_NAME')) {
                 'uses' => 'PublicController@postReturnOrder',
             ]);
 
-            Route::get('downloads', [
-                'as' => 'downloads',
+            Route::get('minted-nfts', [
+                'as' => 'minted_nfts',
                 'uses' => 'PublicController@getDownloads',
             ]);
 

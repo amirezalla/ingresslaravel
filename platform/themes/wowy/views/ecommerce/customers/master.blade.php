@@ -19,14 +19,14 @@
             'routes'    => ['customer.orders.view'],
         ],
         [
-            'key'   => 'customer.downloads',
-            'label' => __('Minted Nfts'),
+            'key'   => 'customer.minted-nfts',
+            'label' => __('Minted NFTs'),
             'icon'  => 'fa fa-newspaper',
             'routes'    => ['customer.downloads'],
         ],
         [
-            'key'    => 'customer.order_returns',
-            'label'  => __('Listed'),
+            'key'    => 'customer.listed-nfts',
+            'label'  => __('Listed NFTs'),
             'icon'   => 'fa  fa-check',
             'routes' => ['customer.order_returns.view'],
         ],
