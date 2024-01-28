@@ -47,7 +47,9 @@ class NftController extends BaseController
         }
     
         
-        $originalPath = $file->storeAs('products', $hashedName.'-150x150', 'public');
+        $hashedName = $this->hashName($file);
+        $originalPath = $file->storeAs('products', $hashedName, 'public');
+        
         $fullImagePath = Storage::disk('public')->path($originalPath);
 
         try {
