@@ -1,6 +1,7 @@
 
 // Ensure this constant is available in the global scope
-const BINANCE_SMART_CHAIN_CHAIN_ID = '0x38'; // Hexadecimal string for Chain ID 56
+// const BINANCE_SMART_CHAIN_CHAIN_ID = '0x38'; // Hexadecimal string for Chain ID 56
+const BINANCE_SMART_CHAIN_TESTNET_CHAIN_ID = '0x61'; // Hexadecimal string for Chain ID 97 (Binance Smart Chain Testnet)
 
 async function getUserAddress() {
     const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
@@ -13,7 +14,8 @@ async function connectMetaMask() {
         try {
             const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
             var account = accounts[0];
-            await switchToBinanceSmartChain();
+            // await switchToBinanceSmartChain();
+            await switchToBinanceSmartChainTestnet();
             const balanceWei = await ethereum.request({
                 method: 'eth_getBalance',
                 params: [account, 'latest']
@@ -34,44 +36,86 @@ async function connectMetaMask() {
     }
 }
 
-async function switchToBinanceSmartChain() {
+// async function switchToBinanceSmartChain() {
+//     const currentChainId = await ethereum.request({ method: 'eth_chainId' });
+//     if (currentChainId !== BINANCE_SMART_CHAIN_TESTNET_CHAIN_ID) {
+//         try {
+//             await ethereum.request({
+//                 method: 'wallet_switchEthereumChain',
+//                 params: [{ chainId: BINANCE_SMART_CHAIN_TESTNET_CHAIN_ID }],
+//             });
+//         } catch (switchError) {
+//             if (switchError.code === 4902) {
+//                 await addBinanceSmartChain();
+//             } else {
+//                 console.error('Could not switch to Binance Smart Chain', switchError);
+//                 throw switchError;
+//             }
+//         }
+//     }
+// }
+
+async function switchToBinanceSmartChainTestnet() {
     const currentChainId = await ethereum.request({ method: 'eth_chainId' });
-    if (currentChainId !== BINANCE_SMART_CHAIN_CHAIN_ID) {
+    if (currentChainId !== BINANCE_SMART_CHAIN_TESTNET_CHAIN_ID) {
         try {
             await ethereum.request({
                 method: 'wallet_switchEthereumChain',
-                params: [{ chainId: BINANCE_SMART_CHAIN_CHAIN_ID }],
+                params: [{ chainId: BINANCE_SMART_CHAIN_TESTNET_CHAIN_ID }],
             });
         } catch (switchError) {
             if (switchError.code === 4902) {
-                await addBinanceSmartChain();
+                await addBinanceSmartChainTestnet();
             } else {
-                console.error('Could not switch to Binance Smart Chain', switchError);
+                console.error('Could not switch to Binance Smart Chain Testnet', switchError);
                 throw switchError;
             }
         }
     }
 }
 
-async function addBinanceSmartChain() {
+// async function addBinanceSmartChain() {
+//     try {
+//         await ethereum.request({
+//             method: 'wallet_addEthereumChain',
+//             params: [{
+//                 chainId: '0x', // Binance Smart Chain ID in hexadecimal
+//                 chainName: 'Binance Smart Chain Mainnet', // Must be a non-empty string
+//                 nativeCurrency: {
+//                     name: 'BNB',
+//                     symbol: 'BNB', // 2-6 characters long
+//                     decimals: 18,
+//                 },
+//                 rpcUrls: ['https://bsc-dataseed.binance.org/'], // Must be a non-empty array
+//                 blockExplorerUrls: ['https://bscscan.com'], // Must be a non-empty array (optional parameter)
+//                 // ...other Binance Smart Chain parameters if necessary
+//             }],
+//         });
+//     } catch (addError) {
+//         console.error('Could not add Binance Smart Chain', addError);
+//         throw addError;
+//     }
+// }
+
+async function addBinanceSmartChainTestnet() {
     try {
         await ethereum.request({
             method: 'wallet_addEthereumChain',
             params: [{
-                chainId: '0x38', // Binance Smart Chain ID in hexadecimal
-                chainName: 'Binance Smart Chain Mainnet', // Must be a non-empty string
+                chainId: BINANCE_SMART_CHAIN_TESTNET_CHAIN_ID, // Binance Smart Chain Testnet ID in hexadecimal
+                chainName: 'Binance Smart Chain Testnet', // Must be a non-empty string
                 nativeCurrency: {
                     name: 'BNB',
                     symbol: 'BNB', // 2-6 characters long
                     decimals: 18,
                 },
-                rpcUrls: ['https://bsc-dataseed.binance.org/'], // Must be a non-empty array
-                blockExplorerUrls: ['https://bscscan.com'], // Must be a non-empty array (optional parameter)
-                // ...other Binance Smart Chain parameters if necessary
+                rpcUrls: ['https://data-seed-prebsc-1-s1.binance.org:8545/'], // BSC Testnet RPC URL
+                blockExplorerUrls: ['https://testnet.bscscan.com'], // BSC Testnet Block Explorer URL
+                // ...other Binance Smart Chain Testnet parameters if necessary
             }],
         });
     } catch (addError) {
-        console.error('Could not add Binance Smart Chain', addError);
+        console.error('Could not add Binance Smart Chain Testnet', addError);
         throw addError;
     }
 }
