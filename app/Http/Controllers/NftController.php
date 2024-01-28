@@ -52,14 +52,14 @@ class NftController extends BaseController
         //     $this->saveScaledVersions($file, $hashedName, 'nfts/scaled');
         // }    
     
-        $file = new MediaFile();
-        $file->user_id=0;
-        $file->name=$hashedName;
-        $file->alt=$hashedName;
-        $file->folder_id=3;
-        $file->mime_type='image/'.strtolower($file->getClientOriginalExtension());
-        $file->url='products/'.$hashedName;
-        $file->save();
+        $MediaFile = new MediaFile();
+        $MediaFile->user_id=0;
+        $MediaFile->name=$hashedName;
+        $MediaFile->alt=$hashedName;
+        $MediaFile->folder_id=3;
+        $MediaFile->mime_type='image/'.strtolower($file->getClientOriginalExtension());
+        $MediaFile->url='products/'.$hashedName;
+        $MediaFile->save();
 
         return response()->json(['success' => true, 'path' => Storage::disk('public')->url($originalPath)]);
     }
