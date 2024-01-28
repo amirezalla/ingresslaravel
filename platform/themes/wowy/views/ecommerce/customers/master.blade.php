@@ -91,7 +91,6 @@
 
                                                 </div>
                                             </div>
-                                            <span>Joined:{{ auth('customer')->user()->created_at}}</span>
                                             <div id="print-msg" class="text-danger hidden"></div>
                                         </div>
                                     </form>
@@ -143,8 +142,15 @@
                             </div>
                             <div class="col-8">
                                 <div class="profile-usertitle-name pt-2">
-                                    <strong>{{ auth('customer')->user()->name }}</strong>
-                                    <p><small>{{ auth('customer')->user()->email }}</small></p>
+                                    <strong>
+                                        @if(auth('customer')->user()->name)
+                                        {{ auth('customer')->user()->name }}
+                                        @else
+                                        Unknown User #{{ auth('customer')->user()->id }}
+                                        @endif
+                                    </strong>
+                                    <span>Joined:{{ auth('customer')->user()->created_at}}</span>
+
                                 </div>
                             </div>
                         </div>
