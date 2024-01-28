@@ -96,9 +96,10 @@
                         title: 'Uploading to IPFS...',
                         html: 'Please wait while we upload your file to IPFS',
                         allowOutsideClick: false,
-                        onBeforeOpen: () => {
+                        willOpen: () => {
                             Swal.showLoading();
                         },
+                        showConfirmButton: false // This will hide the "OK" button.
                     });
                     const projectId = '2LgfAX8FhCBfZ5UmJymQh5FTcq2'; // Replace with your Infura Project ID
                     const projectSecret = '6b2582086ac5ea2d15891314e0462603'; // Replace with your Infura Project Secret
@@ -118,6 +119,8 @@
                                 title: 'IPFS Upload Complete!',
                                 html: 'Now uploading to server.',
                                 allowOutsideClick: false,
+                                showConfirmButton: false // This will hide the "OK" button.
+
                             });
 
 
@@ -154,14 +157,23 @@
                                 Swal.fire(
                                     'Uploaded!',
                                     'Your file has been uploaded successfully.',
-                                    'success'
+                                    'success',
+                                    showConfirmButton: false,
+                                    timer: 1000, // Close after 5000ms (5 seconds)
+                                    timerProgressBar: true, // Optional: shows a timer progress bar
+                                    didClose: () => {
+                                        // Optional: handle the closing event
+                                    } // This will hide the "OK" button
+                                    
                                 );
                             })
                             .catch(error => {
                                 Swal.fire(
                                     'Error!',
                                     'There was a problem uploading your file.',
-                                    'error'
+                                    'error',                        
+                                    showConfirmButton: false // This will hide the "OK" button.
+
                                 );
                             });
 
@@ -173,7 +185,9 @@
                         Swal.fire(
                             'Error!',
                             'There was a problem uploading your file to IPFS.',
-                            'error'
+                            'error',
+                            showConfirmButton: false // This will hide the "OK" button.
+
                         );
                     });
                 };

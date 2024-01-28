@@ -177,7 +177,7 @@ const MintNft = async () => {
 
         // Show alert that we are uploading to IPFS
         Swal.fire({
-            title: 'Generating Token URI',
+            title: 'Generating NFT Metadata',
             html: 'Please wait while we upload your data in IPFS',
             allowOutsideClick: false,
             onBeforeOpen: () => {
@@ -200,6 +200,18 @@ const MintNft = async () => {
             .then(response => response.json())
             .then(async ipfsResult => {
                 if (ipfsResult && ipfsResult.Hash) {
+                    Swal.update({
+                        title: 'Metadata Generated Successfully!',
+                        html: 'Accept the transaction to Mint your NFT',
+                        allowOutsideClick: false,
+                        showConfirmButton: false,
+                        timer: 5000, // Close after 5000ms (5 seconds)
+                        timerProgressBar: true, // Optional: shows a timer progress bar
+                        didClose: () => {
+                            // Optional: handle the closing event
+                        } // This will hide the "OK" button.
+
+                    });
                     const TokenURI = "https://ingressdefi.infura-ipfs.io/ipfs/" + ipfsResult.Hash;
                     const contract = await fetchContract1();
                     const userAddress = await getUserAddress(); // Ensure this is awaited properly
@@ -213,6 +225,7 @@ const MintNft = async () => {
 
                     // Transaction is mined and we have the receipt
                     console.log("NFT Minted with transaction receipt:", receipt);
+
 
                     // If there's an NFTMinted event, and you want to access its arguments, you can find it in the receipt
                     if (receipt.events) {
@@ -258,7 +271,18 @@ const MintNft = async () => {
                                 })
                                     .then(response => response.json())
                                     .then(data => {
-                                        console.log("Product created with ID:", data.product.id); // Assuming your API returns the created product ID
+                                        Swal.fire({
+                                            title: 'NFT minted Successfully !',
+                                            html: 'Your artwork is in the revision phase.',
+                                            allowOutsideClick: false,
+                                            showConfirmButton: false,
+                                            timer: 5000, // Close after 5000ms (5 seconds)
+                                            timerProgressBar: true, // Optional: shows a timer progress bar
+                                            didClose: () => {
+                                                window.location.href = '/customer/overview';
+                                            } // This will hide the "OK" button.
+
+                                        });
                                     })
                                     .catch(error => {
                                         console.error("Error creating product:", error);
