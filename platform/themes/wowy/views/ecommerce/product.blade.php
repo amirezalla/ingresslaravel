@@ -154,7 +154,7 @@
                         @endif -->
 
                         <div class="product-extra-link2 col-12 @if (EcommerceHelper::isQuickBuyButtonEnabled()) has-buy-now-button @endif">
-                        <button class="button button-buy-now ms-2 @if ($product->isOutOfStock()) btn-disabled @endif col-12" type="submit" name="checkout" @if ($product->isOutOfStock()) disabled @endif style='background-color:#ff0076'>{{ __('Buy Now') }}</button>
+                        <button class="button btn_ingress button-buy-now ms-2 @if ($product->isOutOfStock()) btn-disabled @endif col-12" type="submit" name="checkout" @if ($product->isOutOfStock()) disabled @endif style='background-color:#ff0076'>{{ __('Buy Now') }}</button>
 
                             <!-- @if (EcommerceHelper::isCartEnabled())
                                 <button type="submit" class="button button-add-to-cart @if ($product->isOutOfStock()) btn-disabled @endif" type="submit" @if ($product->isOutOfStock()) disabled @endif>{{ __('Add to cart') }}</button>
