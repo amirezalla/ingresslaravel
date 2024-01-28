@@ -46,8 +46,16 @@ class NftController extends BaseController
             return response()->json(['error' => true, 'message' => 'Invalid file type.']);
         }
     
-        $hashedName = $this->hashName($file);
-        $originalPath = $file->storeAs('products', $hashedName, 'public');
+        $$fullImagePath = Storage::disk('public')->path($originalPath);
+
+        try {
+            // Crop the image
+            $croppedImage = $this->cropImage($fullImagePath);
+            echo 'Cropped image saved to: ' . $croppedImage;
+        } catch (Exception $e) {
+            echo 'Error: ' . $e->getMessage();
+        }
+        $originalPath = $file->storeAs('products', $hashedName.'-150x150', 'public');
         
     
         // dd($originalPath);
@@ -95,6 +103,81 @@ class NftController extends BaseController
         return "<pre>$output</pre>";
     }
 
+    function cropImage($filePath, $cropWidth = 150, $cropHeight = 150) {
+        // Check if the GD library is installed
+        if (!extension_loaded('gd') || !function_exists('gd_info')) {
+            throw new Exception('GD library is not installed');
+        }
+    
+        // Get the size and MIME type of the image
+        [$width, $height, $imageType] = getimagesize($filePath);
+    
+        // Create a new image from file 
+        switch ($imageType) {
+            case IMAGETYPE_GIF:
+                $source = imagecreatefromgif($filePath);
+                break;
+            case IMAGETYPE_JPEG:
+                $source = imagecreatefromjpeg($filePath);
+                break;
+            case IMAGETYPE_PNG:
+                $source = imagecreatefrompng($filePath);
+                break;
+            default:
+                throw new Exception('Unsupported image type');
+        }
+    
+        // Calculate the crop size
+        $minSize = min($width, $height);
+        $cropWidth = $minSize < $cropWidth ? $minSize : $cropWidth;
+        $cropHeight = $minSize < $cropHeight ? $minSize : $cropHeight;
+    
+        // Define the crop start coordinates
+        $startX = ($width - $cropWidth) / 2;
+        $startY = ($height - $cropHeight) / 2;
+    
+        // Create a new true color image
+        $croppedImage = imagecreatetruecolor($cropWidth, $cropHeight);
+    
+        // Copy and resize part of an image with resampling
+        imagecopyresampled($croppedImage, $source, 0, 0, $startX, $startY, $cropWidth, $cropHeight, $cropWidth, $cropHeight);
+    
+        // Extract the filename without extension and the file extension
+        $filenameWithoutExtension = pathinfo($filePath, PATHINFO_FILENAME);
+        $fileExtension = pathinfo($filePath, PATHINFO_EXTENSION);
+    
+        // Construct the new filename with the dimensions
+        $newFilename = $filenameWithoutExtension . '-150x150.' . $fileExtension;
+    
+        // Use the same directory as the original file for the cropped file
+        $directory = pathinfo($filePath, PATHINFO_DIRNAME);
+    
+        // Combine the directory, new filename, and extension
+        $croppedFilePath = $directory . '/' . $newFilename;
+    
+        // Save the cropped image
+        switch ($imageType) {
+            case IMAGETYPE_GIF:
+                imagegif($croppedImage, $croppedFilePath); // Save the image as a GIF
+                break;
+            case IMAGETYPE_JPEG:
+                imagejpeg($croppedImage, $croppedFilePath, 100); // Save the image as a JPEG
+                break;
+            case IMAGETYPE_PNG:
+                imagepng($croppedImage, $croppedFilePath); // Save the image as a PNG
+                break;
+        }
+    
+        // Free up memory
+        imagedestroy($source);
+        imagedestroy($croppedImage);
+    
+        return $croppedFilePath;
+    }
+    
+    
+
+
 
     public function MintToImport(Request $request){
         
@@ -115,7 +198,7 @@ class NftController extends BaseController
         
         // Store the relative path as an array in JSON format in the 'images' column
         $product->images = json_encode([$relativeImagePath]);    
-            
+
         $product->seller_eth_address = $seller->eth_address;
         $product->owner_eth_address = $owner->eth_address;
         $nft_id_hex = $request->input('nft_id.hex'); // This will retrieve the hex value from the request
