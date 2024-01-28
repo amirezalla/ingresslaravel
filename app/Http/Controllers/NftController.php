@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Botble\Ecommerce\Models\Product;
 use Botble\Ecommerce\Models\Customer;
-use Botble\Media\Model\MediaFile;
+use Botble\Media\Models\MediaFile;
 use Image; // Assuming you're using the Intervention Image library
 use FFMpeg; // If using an FFMpeg library for video processing
 use Symfony\Component\HttpFoundation\File\MimeType\MimeTypeGuesser;
