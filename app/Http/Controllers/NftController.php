@@ -54,7 +54,7 @@ class NftController extends BaseController
 
         try {
             // Crop the image
-            $croppedImage = $this->cropImage($fullImagePath);
+            $croppedImage = $this->fitImageInSquare($fullImagePath,500);
         } catch (Exception $e) {
             echo 'Error: ' . $e->getMessage();
         }
@@ -176,6 +176,71 @@ class NftController extends BaseController
         return $croppedFilePath;
     }
     
+
+
+
+    function fitImageInSquare($filePath, $squareSize = 500) {
+        // Check if the GD library is installed
+        if (!extension_loaded('gd') || !function_exists('gd_info')) {
+            throw new Exception('GD library is not installed');
+        }
+    
+        // Get the size and MIME type of the image
+        [$width, $height, $imageType] = getimagesize($filePath);
+    
+        // Create a new image from file 
+        switch ($imageType) {
+            case IMAGETYPE_GIF:
+                $source = imagecreatefromgif($filePath);
+                break;
+            case IMAGETYPE_JPEG:
+                $source = imagecreatefromjpeg($filePath);
+                break;
+            case IMAGETYPE_PNG:
+                $source = imagecreatefrompng($filePath);
+                break;
+            default:
+                throw new Exception('Unsupported image type');
+        }
+    
+        // Calculate the new size to maintain aspect ratio
+        $ratio = min($squareSize / $width, $squareSize / $height);
+        $newWidth = (int)($width * $ratio);
+        $newHeight = (int)($height * $ratio);
+    
+        // Create a new true color image with a white background
+        $squareImage = imagecreatetruecolor($squareSize, $squareSize);
+        $white = imagecolorallocate($squareImage, 255, 255, 255);
+        imagefilledrectangle($squareImage, 0, 0, $squareSize, $squareSize, $white);
+    
+        // Copy and resize the original image onto the center of the square
+        $xOffset = (int)(($squareSize - $newWidth) / 2);
+        $yOffset = (int)(($squareSize - $newHeight) / 2);
+        imagecopyresampled($squareImage, $source, $xOffset, $yOffset, 0, 0, $newWidth, $newHeight, $width, $height);
+    
+        // Save the new image
+        // Extract the filename without extension and the file extension
+        $filenameWithoutExtension = pathinfo($filePath, PATHINFO_FILENAME);
+        $fileExtension = pathinfo($filePath, PATHINFO_EXTENSION);
+
+        // Construct the new filename with the dimensions
+        $newFilename = $filenameWithoutExtension . '-150x150.' . $fileExtension;
+
+        // Use the same directory as the original file for the cropped file
+        $directory = pathinfo($filePath, PATHINFO_DIRNAME);
+
+        // Combine the directory, new filename, and extension
+        $newFilePath = $directory . '/' . $newFilename;
+        imagejpeg($squareImage, $newFilePath, 100); // Save the image as a JPEG
+    
+        // Free up memory
+        imagedestroy($source);
+        imagedestroy($squareImage);
+    
+        return $newFilePath;
+    }
+
+
     
 
 
