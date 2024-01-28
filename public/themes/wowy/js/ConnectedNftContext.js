@@ -249,7 +249,7 @@ const MintNft = async () => {
                                     name: name, // You would get this from your form or NFT metadata
                                     description: description, // You would get this from your form or NFT metadata
                                     status: "pending",
-                                    images: hiddenImageurl,
+                                    image: hiddenImageurl,
                                     artist_name: artist_name, // Replace with actual IPFS hash of the image
                                     sku: "", // If you have a Stock Keeping Unit, otherwise generate or leave empty
                                     quantity: 99999, // Assuming quantity is 1 for NFTs
