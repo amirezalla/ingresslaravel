@@ -204,40 +204,28 @@ const MintNft = async () => {
                     const contract = await fetchContract1();
                     const userAddress = await getUserAddress(); // Ensure this is awaited properly
 
-                    try {
-                        // Call the mintNFT function on your contract instance
-                        const mintTxResponse = await contract.mintNFT(TokenURI, 0, 1);
-                    
-                        // Wait for the transaction to be mined
-                        const receipt = await mintTxResponse.wait();
-                    
-                        // Transaction is mined and we have the receipt
-                        console.log("NFT Minted with transaction receipt:", receipt);
-                    
-                        // If there's an NFTMinted event, and you want to access its arguments, you can find it in the receipt
-                        if (receipt.events) {
-                            for (let event of receipt.events) {
-                                if (event.event === 'NFTMinted') {
-                                    const nftId = event.args[1];
-                                    console.log("NFT Minted with ID:", nftId.toString());
-                                    // Handle the NFT ID as needed
-                                    break;
-                                }
+
+                    // Call the mintNFT function on your contract instance
+                    const mintTxResponse = await contract.mintNFT(TokenURI, 0, 1);
+
+                    // Wait for the transaction to be mined
+                    const receipt = await mintTxResponse.wait();
+
+                    // Transaction is mined and we have the receipt
+                    console.log("NFT Minted with transaction receipt:", receipt);
+
+                    // If there's an NFTMinted event, and you want to access its arguments, you can find it in the receipt
+                    if (receipt.events) {
+                        for (let event of receipt.events) {
+                            if (event.event === 'NFTMinted') {
+                                const nftId = event.args[1];
+                                console.log("NFT Minted with ID:", nftId.toString());
+                                // Handle the NFT ID as needed
+                                break;
                             }
                         }
-                    
-                        // Close Swal after successful minting
-                        Swal.close();
-                    } catch (error) {
-                        console.error("Error minting NFT:", error);
-                    
-                        // Display error message using Swal
-                        Swal.fire(
-                            'Error!',
-                            `There was a problem minting your NFT: ${error.message}`,
-                            'error'
-                        );
                     }
+
                 }
             })
             .catch(error => {
