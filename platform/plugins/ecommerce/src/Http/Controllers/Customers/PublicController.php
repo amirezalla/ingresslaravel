@@ -22,6 +22,7 @@ use Botble\Ecommerce\Models\OrderProduct;
 use Botble\Ecommerce\Models\OrderReturn;
 use Botble\Ecommerce\Models\Review;
 use Botble\Ecommerce\Repositories\Interfaces\ProductInterface;
+use Botble\Ecommerce\Repositories\Interfaces\ProductInterface;
 use Botble\Media\Facades\RvMedia;
 use Botble\Media\Services\ThumbnailService;
 use Botble\Media\Supports\Zipper;
@@ -419,11 +420,11 @@ class PublicController extends Controller
 
         SeoHelper::setTitle(__('Request Return Product(s) In Order :id', ['id' => $order->code]));
 
-        Theme::breadcrumb()->add(__('Home'), route('public.index'))
-            ->add(
-                __('Request Return Product(s) In Order :id', ['id' => $order->code]),
-                route('customer.order_returns.request_view', $orderId)
-            );
+        // Theme::breadcrumb()->add(__('Home'), route('public.index'))
+        //     ->add(
+        //         __('Request Return Product(s) In Order :id', ['id' => $order->code]),
+        //         route('customer.order_returns.request_view', $orderId)
+        //     );
 
         Theme::asset()->container('footer')->add(
             'order-return-js',
@@ -529,9 +530,9 @@ class PublicController extends Controller
             ->withCount('items')
             ->paginate(10);
 
-        Theme::breadcrumb()
-            ->add(__('Home'), route('public.index'))
-            ->add(__('Order Return Requests'), route('customer.order_returns'));
+        // Theme::breadcrumb()
+        //     ->add(__('Home'), route('public.index'))
+        //     ->add(__('Order Return Requests'), route('customer.order_returns'));
 
         return Theme::scope(
             'ecommerce.customers.order-returns.list',
@@ -593,9 +594,9 @@ class PublicController extends Controller
             ->with(['order', 'product', 'productFiles', 'product.productFiles'])
             ->paginate(10);
 
-        Theme::breadcrumb()
-            ->add(__('Home'), route('public.index'))
-            ->add(__('Downloads'), route('customer.downloads'));
+        // Theme::breadcrumb()
+        //     ->add(__('Home'), route('public.index'))
+        //     ->add(__('Downloads'), route('customer.downloads'));
 
         return Theme::scope(
             'ecommerce.customers.orders.downloads',
