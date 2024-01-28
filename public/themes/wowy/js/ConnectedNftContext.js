@@ -247,22 +247,20 @@ const MintNft = async () => {
                                 };
                                 var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
-                                fetch('/nft/MintToImport', {
-                                    method: 'POST',
+                                axios.post('/nft/MintToImport', productData, {
                                     headers: {
-                                        'Content-Type': 'application/json', // This header is necessary
-                                        'Accept': 'application/json', // It's good to include this as well
-                                        'X-CSRF-TOKEN': csrfToken, // CSRF token for Laravel
-                                    },
-                                    body: JSON.stringify(productData)
+                                        'Accept': 'application/json',
+                                        'X-CSRF-TOKEN': csrfToken
+                                    }
                                 })
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        console.log("Product created with ID:", data.message); // Assuming your API returns the created product ID
-                                    })
-                                    .catch(error => {
-                                        console.error("Error creating product:", error);
-                                    });
+                                .then(response => {
+                                    console.log(response.data);
+                                    // Handle the response data here
+                                })
+                                .catch(error => {
+                                    console.error('Error:', error.response);
+                                    // Handle any errors here
+                                });
                                 break;
                             }
                         }
