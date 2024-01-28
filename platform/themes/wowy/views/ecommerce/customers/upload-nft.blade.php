@@ -189,7 +189,129 @@
 
 
 
+    document.getElementById('btn_submit_mint').addEventListener('click', async function(event) {
+        if (event.target.files.length > 0) {
+            var file = event.target.files[0];
 
+            // Show SweetAlert for the ongoing process
+            Swal.fire({
+                title: 'Uploading...',
+                html: 'Please wait while we upload your file',
+                allowOutsideClick: false,
+                onBeforeOpen: () => {
+                    Swal.showLoading();
+                },
+            });
+            var preview = document.getElementById('preview');
+            var dragText = document.getElementById('drag-text');
+            var iconUpload = document.getElementById('icon-upload');
+
+            var files = event.target.files;
+            if (files && files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                    dragText.style.display='none';
+                    iconUpload.style.display='none';
+                };
+                reader.readAsDataURL(files[0]);
+                reader.onloadend=function() {
+                    // Convert image to binary data
+                    var ipfsFormData = new FormData();
+                    ipfsFormData.append("file", new Blob([reader.result], { type: file.type }), file.name);
+
+                    // Show alert that we are uploading to IPFS
+                    Swal.fire({
+                        title: 'Uploading to IPFS...',
+                        html: 'Please wait while we upload your file to IPFS',
+                        allowOutsideClick: false,
+                        onBeforeOpen: () => {
+                            Swal.showLoading();
+                        },
+                    });
+                    const projectId = '2LgfAX8FhCBfZ5UmJymQh5FTcq2'; // Replace with your Infura Project ID
+                    const projectSecret = '6b2582086ac5ea2d15891314e0462603'; // Replace with your Infura Project Secret
+                    const auth = btoa(`${projectId}:${projectSecret}`);
+                    // Upload to IPFS
+                    fetch('https://ingressdefi.infura-ipfs.io:5001/api/v0/add', {
+                        headers: {
+                            'Authorization': `Basic ${auth}`,
+                        },
+                        method: 'POST',
+                        body: ipfsFormData
+                    })
+                    .then(response => response.json())
+                    .then(ipfsResult => {
+                        if(ipfsResult && ipfsResult.Hash) {
+                            Swal.update({
+                                title: 'IPFS Upload Complete!',
+                                html: 'Now uploading to server.',
+                                allowOutsideClick: false,
+                            });
+
+
+                            // Here, you can handle the IPFS hash. For example:
+                            // Store it in your database, or
+                            // Attach it to the form data you'll send to your server
+                            var formData = new FormData();
+                            document.getElementById('hiddenImageIpfs').value = ipfsResult.Hash;
+                            formData.append('filepond', file);
+
+                            // Add other form data and continue with your existing process
+
+                            var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+                            
+                            // AJAX request to server
+                            fetch('/nft/uploadNftImage', {
+                                method: 'POST',
+                                body: formData,
+                                headers: {
+                                'X-CSRF-TOKEN': csrfToken
+                                }
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                console.log(data.path);
+                                if (data && data.path) {
+                                    // Set the value of the hidden input field with id 'hiddenImageUrl'
+                                    document.getElementById('hiddenImageurl').value = data.path;
+                                } else {
+                                    // Handle the case where the JSON response does not contain 'path'
+                                    throw new Error('Path not found in response');
+                                }
+                                Swal.fire(
+                                    'Uploaded!',
+                                    'Your file has been uploaded successfully.',
+                                    'success'
+                                );
+                            })
+                            .catch(error => {
+                                Swal.fire(
+                                    'Error!',
+                                    'There was a problem uploading your file.',
+                                    'error'
+                                );
+                            });
+
+                        } else {
+                            throw new Error('IPFS upload error');
+                        }
+                    })
+                    .catch(error => {
+                        Swal.fire(
+                            'Error!',
+                            'There was a problem uploading your file to IPFS.',
+                            'error'
+                        );
+                    });
+                };
+            }   
+
+            
+        }
+    });
     </script>
 
 
