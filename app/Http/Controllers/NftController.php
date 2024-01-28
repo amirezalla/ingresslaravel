@@ -92,7 +92,7 @@ class NftController extends BaseController
         $product = new Product();
         $product->name = $request->name;
         $product->description = $request->description;
-        $product->images = $request->image; // Assuming this is a URL or a path to the image
+        $product->images = json_encode([$request->image]);
         $product->seller_eth_address = $seller->eth_address;
         $product->owner_eth_address = $owner->eth_address;
         $nft_id_hex = $request->input('nft_id.hex'); // This will retrieve the hex value from the request
