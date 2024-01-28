@@ -149,7 +149,7 @@
                                         Unknown User #{{ auth('customer')->user()->id }}
                                         @endif
                                     </strong>
-                                    <p><small>Joined:{{ auth('customer')->user()->created_at}}</small></p>
+                                    <p style='color:white'><small>Joined:{{ auth('customer')->user()->created_at}}</small></p>
 
                                 </div>
                             </div>
