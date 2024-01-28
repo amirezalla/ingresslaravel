@@ -154,17 +154,10 @@
                                     // Handle the case where the JSON response does not contain 'path'
                                     throw new Error('Path not found in response');
                                 }
-                                Swal.fire({
+                                Swal.fire(
                                     'Uploaded!',
                                     'Your file has been uploaded successfully.',
                                     'success',
-                                    showConfirmButton: false,
-                                    timer: 1000, // Close after 5000ms (5 seconds)
-                                    timerProgressBar: true, // Optional: shows a timer progress bar
-                                    didClose: () => {
-                                        // Optional: handle the closing event
-                                    } // This will hide the "OK" button
-                                }   
                                 );
                             })
                             .catch(error => {
