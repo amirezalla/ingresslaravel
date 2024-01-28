@@ -99,7 +99,7 @@ const fetchNFTs = async () => {
     try {
         const contract = await fetchContract();
         console.log(contract);
-        console.log(await contract.resolvedAddress);
+        console.log(await contract.methods);
     } catch (error) {
         console.error("Error while fetching NFTs:", error);
     }
