@@ -205,21 +205,36 @@ const MintNft = async () => {
                     const userAddress = await getUserAddress(); // Ensure this is awaited properly
 
                     try {
-                        const mintTx = await contract.mintNFT(TokenURI, 0, 1).send({ from: userAddress });
-                        // Listen for the confirmation or receipt
-                        mintTx.on('confirmation', (confirmationNumber, receipt) => {
-                            console.log('NFT minted:', receipt);
-                        }).on('receipt', (receipt) => {
-                            console.log('Receipt received:', receipt);
-                            // If the Swal is showing, close it
-                            Swal.close();
-                            // Process receipt
-                        });
+                        // Call the mintNFT function on your contract instance
+                        const mintTxResponse = await contract.mintNFT(TokenURI, 0, 1);
+                    
+                        // Wait for the transaction to be mined
+                        const receipt = await mintTxResponse.wait();
+                    
+                        // Transaction is mined and we have the receipt
+                        console.log("NFT Minted with transaction receipt:", receipt);
+                    
+                        // If there's an NFTMinted event, and you want to access its arguments, you can find it in the receipt
+                        if (receipt.events) {
+                            for (let event of receipt.events) {
+                                if (event.event === 'NFTMinted') {
+                                    const nftId = event.args[1];
+                                    console.log("NFT Minted with ID:", nftId.toString());
+                                    // Handle the NFT ID as needed
+                                    break;
+                                }
+                            }
+                        }
+                    
+                        // Close Swal after successful minting
+                        Swal.close();
                     } catch (error) {
-                        // If the Swal is showing, update it with the error
+                        console.error("Error minting NFT:", error);
+                    
+                        // Display error message using Swal
                         Swal.fire(
                             'Error!',
-                            'There was a problem minting your NFT: ' + error.message,
+                            `There was a problem minting your NFT: ${error.message}`,
                             'error'
                         );
                     }
