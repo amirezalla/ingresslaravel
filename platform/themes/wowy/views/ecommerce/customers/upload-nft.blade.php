@@ -24,7 +24,7 @@
                 <input type="hidden" id="hiddenImageurl" name="hiddenImageurl" value="">                
                 <input type="hidden" id="hiddenImageIpfs" name="hiddenImageIpfs" value="">                
                 <div class="form-group">
-                    <select class="form-control" id="category">
+                    <select class="form-control" id="category" style='height:44px'>
                         <option selected>Category</option>
                         <option value="1">Hot Promotions</option>
                         <option value="2">Electronics</option>
@@ -42,7 +42,7 @@
                         <input type="text" class="form-control" placeholder="Depth" id='depth'>
                     </div>
                 </div>
-                <div class="form-group mt-2">
+                <div class="form-group mt-3">
                     <textarea class="form-control" rows="9" placeholder="Description" id='description'></textarea>
                 </div>
                 <div class="form-group">
