@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Botble\Ecommerce\Models\Product;
 use Botble\Ecommerce\Models\Customer;
+use Botble\Media\Model\MediaFile;
 use Image; // Assuming you're using the Intervention Image library
 use FFMpeg; // If using an FFMpeg library for video processing
 use Symfony\Component\HttpFoundation\File\MimeType\MimeTypeGuesser;
@@ -44,13 +45,22 @@ class NftController extends BaseController
         }
     
         $hashedName = $this->hashName($file);
-        $originalPath = $file->storeAs('nfts/original', $hashedName, 'public');
+        $originalPath = $file->storeAs('products', $hashedName, 'public');
     
         // dd($originalPath);
         // if (in_array($extension, ['jpeg', 'jpg', 'png', 'gif'])) {
         //     $this->saveScaledVersions($file, $hashedName, 'nfts/scaled');
         // }    
     
+        $file = new MediaFile();
+        $file->user_id=0;
+        $file->name=$hashedName;
+        $file->alt=$hashedName;
+        $file->folder_id=3;
+        $file->mime_type='image/'.strtolower($file->getClientOriginalExtension());
+        $file->url='products/'.$hashedName;
+        $file->save();
+
         return response()->json(['success' => true, 'path' => Storage::disk('public')->url($originalPath)]);
     }
     
