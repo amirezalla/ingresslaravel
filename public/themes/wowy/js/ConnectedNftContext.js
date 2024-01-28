@@ -280,6 +280,7 @@ const MintNft = async () => {
                                             timerProgressBar: true, // Optional: shows a timer progress bar
                                             didClose: () => {
                                                 window.location.href = '/customer/minted-nfts';
+
                                             } // This will hide the "OK" button.
 
                                         });
