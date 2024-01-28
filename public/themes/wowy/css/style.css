@@ -10750,3 +10750,7 @@ h6 {
 .widget-title {
     color: #212529 !important;
 }
+
+.nav-tabs .nav-link.active {
+    color: white;
+}
