@@ -10715,9 +10715,8 @@ h6 {
 
 }
 
-.dashboard-menu ul li .active {
+.dashboard-menu ul li a.active {
 
-
-    color: #ff0076;
+    background-color: #ff0076 !important;
 
 }
