@@ -97,7 +97,7 @@ async function fetchContract1() {
     const signer = provider.getSigner();
     const abiResponse = await fetch('/themes/wowy/js/nft/NFTMarketplace.json');
     const NFTMarketplaceABI = await abiResponse.json();
-    const contract = new ethers.Contract(NFTMarketplaceAddress, NFTMarketplaceABI, signer);
+    const contract = new ethers.Contract(NFTMarketplaceAddress, NFTMarketplaceABI.abi, signer);
     return contract;
 }
 
