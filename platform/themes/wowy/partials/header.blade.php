@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+@php
+if (request()->path() == '/') {
+            dd('DNS CHECK');
+}
+@endphp
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
     <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
