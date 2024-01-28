@@ -163,11 +163,21 @@ fetchNFTs();
 
 const MintNft = async () => {
     try {
+        const metadata = {
+            name: document.getElementById('artWorkName').value,
+            description: document.getElementById('description').value,
+            image: document.getElementById('hiddenImageIpfs').value, // This should be a full IPFS path like "ipfs://<hash>"
+            artist: document.getElementById('creatorName').value,
+        };
+        const metadataString = JSON.stringify(metadata);
+
+        // Convert the JSON string to a Blob
+        const metadataBlob = new Blob([metadataString], { type: 'application/json' });
+
+        // Create a new FormData object and append the metadata Blob to it
         var ipfsFormData = new FormData();
-        ipfsFormData.append('name', document.getElementById('artWorkName').value);
-        ipfsFormData.append('description', document.getElementById('description').value);
-        ipfsFormData.append('image', document.getElementById('hiddenImageIpfs').value);
-        ipfsFormData.append('artist', document.getElementById('creatorName').value);
+        ipfsFormData.append('file', metadataBlob);
+        
         // Show alert that we are uploading to IPFS
         Swal.fire({
             title: 'Generating Token URI',
