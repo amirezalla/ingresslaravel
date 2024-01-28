@@ -22,7 +22,7 @@
             'key'   => 'customer.minted_nfts',
             'label' => __('Minted NFTs'),
             'icon'  => 'fa fa-newspaper',
-            'routes'    => ['customer.downloads'],
+            'routes'    => ['customer.minted_nfts'],
         ],
         [
             'key'    => 'customer.listed_nfts',
