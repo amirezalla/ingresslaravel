@@ -97,6 +97,7 @@ class NftController extends BaseController
         $product->owner_eth_address = $owner->eth_address;
         $nft_id_hex = $request->input('nft_id.hex'); // This will retrieve the hex value from the request
         $nft_id_decimal = hexdec($nft_id_hex);
+        $product->artist_name=$request->artist_name;
         $product->nft_id = $nft_id_decimal;
         $product->status = 'pending'; // Assuming the default status is 'pending'
         // Set other fields as needed

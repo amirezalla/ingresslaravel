@@ -66,7 +66,8 @@ class Product extends BaseModel
         'generate_license_code',
         'seller_eth_address',
         'owner_eth_address',
-        'nft_id'
+        'nft_id',
+        'artist_name'
     ];
 
     protected $appends = [
