@@ -248,7 +248,7 @@ const MintNft = async () => {
                                 var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
                                 // Make a POST request to your server to create a new product
-                                fetch('/api/products', { // Replace with your actual API endpoint
+                                fetch('/nft/MintToImport', { // Replace with your actual API endpoint
                                     method: 'POST',
                                     headers: {
                                         'Content-Type': 'application/json',
