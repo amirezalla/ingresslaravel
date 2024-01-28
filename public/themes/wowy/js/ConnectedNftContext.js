@@ -201,7 +201,7 @@ const AdminApprove = async (nftId) => {
 
 document.querySelector('#btn_submit_mint').addEventListener('click', MintNft);
 
-document.querySelector('#admin_mint_approve').addEventListener('click', AdminApprove);
+// document.querySelector('#admin_mint_approve').addEventListener('click', AdminApprove);
 
 
 
