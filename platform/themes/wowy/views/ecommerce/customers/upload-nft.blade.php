@@ -26,9 +26,9 @@
                 <div class="form-group">
                     <select class="form-control" id="category">
                         <option selected>Category</option>
-                        <option value="1">Abstract</option>
-                        <option value="2">Figurative</option>
-                        <option value="3">Landscape</option>
+                        <option value="1">Hot Promotions</option>
+                        <option value="2">Electronics</option>
+                        <option value="3">Home Audio & Theaters</option>
                     </select>
                 </div>
                 <div class="form-row row">
