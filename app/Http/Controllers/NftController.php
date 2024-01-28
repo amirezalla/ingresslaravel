@@ -85,7 +85,6 @@ class NftController extends BaseController
     public function MintToImport(Request $request){
         
         // Find or create the seller and owner in the customer table
-        dd($request,Customer::where('eth_address',$request->seller_eth_address)->first());
         $seller = Customer::firstOrCreate(['eth_address' => $request->seller_eth_address]);
         $owner = Customer::firstOrCreate(['eth_address' => $request->owner_eth_address]);
 

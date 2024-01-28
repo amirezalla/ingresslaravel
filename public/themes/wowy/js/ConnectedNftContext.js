@@ -224,8 +224,8 @@ const MintNft = async () => {
                                 //make a request to create the product with uploader_eth_address and nft_id , status=pending, owner_eth_address
 
                                 // Assume 'uploader_eth_address' and 'owner_eth_address' are available in your context
-                                const uploaderEthAddress = "0x" + userAddress; // Replace with actual uploader address
-                                const ownerEthAddress = "0x" + userAddress; // Replace with actual owner address
+                                const uploaderEthAddress = userAddress; // Replace with actual uploader address
+                                const ownerEthAddress = userAddress; // Replace with actual owner address
                                 const hiddenImageurl = document.getElementById('hiddenImageurl').value;
                                 const name = document.getElementById('artWorkName').value;
                                 const description = document.getElementById('description').value;
