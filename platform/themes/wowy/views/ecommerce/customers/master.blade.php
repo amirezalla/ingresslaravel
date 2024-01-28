@@ -69,8 +69,8 @@
         <div class="row">
             <div class="col-lg-10 m-auto">
                 <div class="row">
-                    <div class="col-md-4">
-                        <div class="row">
+                    <div class="col-md-12">
+                    <div class="row">
                             <div class="col-4">
                                 <div class="profile-sidebar crop-avatar">
                                     <form id="avatar-upload-form" enctype="multipart/form-data" action="javascript:void(0)" onsubmit="return false">
@@ -155,6 +155,9 @@
                             </div>
                         </div>
                         <hr>
+                    </div>
+                    <div class="col-md-4">
+
                         <div class="dashboard-menu">
                             <ul class="nav flex-column">
                                 @foreach ($menus as $item)
