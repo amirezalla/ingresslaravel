@@ -17,7 +17,7 @@
         </div>
         <div class="col-md-6">
             <!-- Artwork Details Form -->
-            <form>
+                <div>
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Name of your artwork" id='artWorkName'>
                 </div>
@@ -48,8 +48,8 @@
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Creator name" id='creatorName'>
                 </div>
-                <button type="submit" class="col-12 btn btn_ingress btn-block" id='btn_submit_mint' > Mint </button>
-            </form>
+                <button class="col-12 btn btn_ingress btn-block" id='btn_submit_mint' > Mint </button>
+            </div>
         </div>
     </div>
 </div>

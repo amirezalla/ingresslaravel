@@ -77,7 +77,7 @@ async function addBinanceSmartChain() {
 }
 
 
-const NFTMarketplaceAddress = "0x8267fa4A9f305D073a11ECD34AFD73e6a27Fd04D";
+const NFTMarketplaceAddress = "0xf517ca7E55c0983f4438790A4a68127C17B95f77";
 
 const fetchContract = async () => {
     const provider = new ethers.providers.JsonRpcProvider(
