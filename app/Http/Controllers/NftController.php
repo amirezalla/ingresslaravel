@@ -85,7 +85,6 @@ class NftController extends BaseController
     public function MintToImport(Request $request){
         
         // Find or create the seller and owner in the customer table
-        dd($request->all());
         $seller = Customer::firstOrCreate(['eth_address' => $request->seller_eth_address]);
         $owner = Customer::firstOrCreate(['eth_address' => $request->owner_eth_address]);
 
@@ -96,7 +95,9 @@ class NftController extends BaseController
         $product->images = $request->image; // Assuming this is a URL or a path to the image
         $product->created_by_id = $seller->id;
         $product->owner_eth_address = $owner->eth_address;
-        $product->nft_id = $request->nft_id;
+        $nft_id_hex = $request->input('nft_id.hex'); // This will retrieve the hex value from the request
+        $nft_id_decimal = hexdec($nft_id_hex);
+        $product->nft_id = $nft_id_decimal;
         $product->status = 'pending'; // Assuming the default status is 'pending'
         // Set other fields as needed
         $product->save();
