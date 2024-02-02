@@ -22,4 +22,35 @@
     <div class="pagination-area">
         {{ $products->links() }}
     </div>
+
+    <script>
+        const listNftButton = document.querySelector('.ListNft');
+
+        listNftButton.addEventListener('click', function() {
+            Swal.fire({
+                title: 'List NFT',
+                html: `
+                        <input type="number" id="min-bid" class="swal2-input" placeholder="Amount of Min Bid">
+                        <input type="number" id="buy-now-price" class="swal2-input" placeholder="Buy Now Price">
+                        <select id="auction-end" class="swal2-input">
+                            <option value="12">12 Hours</option>
+                            <option value="24">24 Hours</option>
+                            <option value="72">3 Days</option>
+                        </select>
+                    `,
+                focusConfirm: false,
+                preConfirm: () => {
+                    const minBid = document.getElementById('min-bid').value;
+                    const buyNowPrice = document.getElementById('buy-now-price').value;
+                    const auctionEnd = document.getElementById('auction-end').value;
+                    // You can process form values here or send them to your server
+                    console.log('Min Bid:', minBid, 'Buy Now Price:', buyNowPrice, 'Auction End:',
+                        auctionEnd);
+                },
+                confirmButtonText: 'List NFT',
+                showCancelButton: true,
+                cancelButtonText: 'Cancel',
+            });
+        });
+    </script>
 @endsection
