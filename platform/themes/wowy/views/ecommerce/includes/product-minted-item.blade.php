@@ -4,16 +4,15 @@
             <div class="product-img product-img-zoom">
                 <a href="{{ $product->url }}">
                     @php
-                    // Original file path
-                    $originalFilePath = $product->images[0];
+                        // Original file path
+                        $originalFilePath = $product->images[0];
 
-                    // Insert '-150x150' before the '.jpg' extension
-                    $modifiedFilePath = str_replace('.jpg', '-150x150.jpg', $originalFilePath);
-
+                        // Insert '-150x150' before the '.jpg' extension
+                        $modifiedFilePath = str_replace('.jpg', '-150x150.jpg', $originalFilePath);
 
                     @endphp
                     <img class="default-img" src="/storage/{{ $modifiedFilePath }}" alt="{{ $product->name }}">
-                    <img class="hover-img" src="/storage/{{ $modifiedFilePath] }}" alt="{{ $product->name }}">
+                    <img class="hover-img" src="/storage/{{ $modifiedFilePath }}" alt="{{ $product->name }}">
                 </a>
             </div>
 
