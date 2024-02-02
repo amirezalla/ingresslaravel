@@ -4,12 +4,8 @@
             <div class="product-img product-img-zoom">
                 <a href="{{ $product->url }}">
                     @dd($product->images[0])
-                    <img class="default-img"
-                        src="{{ RvMedia::getImageUrl($product->image[0], 'product-thumb', false, RvMedia::getDefaultImage()) }}"
-                        alt="{{ $product->name }}">
-                    {{-- <img class="hover-img"
-                        src="{{ RvMedia::getImageUrl($product->images[1] ?? $product->image, 'product-thumb', false, RvMedia::getDefaultImage()) }}"
-                        alt="{{ $product->name }}"> --}}
+                    <img class="default-img" src="/storage/{{ $product->images[0] }}" alt="{{ $product->name }}">
+                    <img class="hover-img" src="/storage/{{ $product->images[0] }}" alt="{{ $product->name }}">
                 </a>
             </div>
 
