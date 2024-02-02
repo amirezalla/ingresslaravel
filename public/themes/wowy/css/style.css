@@ -4440,8 +4440,7 @@ h6.post-title {
 .header-info>ul>li a {
     color: white;
     background: #ff0076;
-
-    transition: all 0.2s;
+    transition: all 0.7s;
 
 }
 
