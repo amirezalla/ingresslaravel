@@ -4,7 +4,9 @@
         use Botble\Ecommerce\Models\Product;
         $user_eth = request()->user('customer')->eth_address;
         $perPage = 3;
-        $products = Product::where('owner_eth_address', $user_eth)->paginate($perPage);
+        $products = Product::where('owner_eth_address', $user_eth)
+            ->sortBy('created-at', 'desc')
+            ->paginate($perPage);
     @endphp
     <div class="row">
         @forelse ($products as $product)
