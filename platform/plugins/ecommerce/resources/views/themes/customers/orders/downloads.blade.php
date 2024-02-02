@@ -7,7 +7,7 @@
     @endphp
     <div class="row">
         @foreach ($products as $product)
-            <div class="col-3">
+            <div class="col-4">
                 @include(Theme::getThemeNamespace() . '::views.ecommerce.includes.product-minted-item',
                     $product)
             </div>
