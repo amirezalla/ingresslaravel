@@ -2949,6 +2949,7 @@ table .product-thumbnail img {
 
 .product-cart-wrap .product-badges span {
     color: #fff;
+    width: 100%;
     display: inline-block;
     font-size: x-small;
     letter-spacing: 1px;
