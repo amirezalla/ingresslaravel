@@ -40,10 +40,10 @@
                     `,
                 focusConfirm: false,
                 preConfirm: () => {
+                    const dataId = this.getAttribute('data-id');
                     const minBid = document.getElementById('min-bid').value;
                     const buyNowPrice = document.getElementById('buy-now-price').value;
                     const auctionEnd = document.getElementById('auction-end').value;
-                    // You can process form values here or send them to your server
                     console.log('Min Bid:', minBid, 'Buy Now Price:', buyNowPrice, 'Auction End:',
                         auctionEnd);
                 },
