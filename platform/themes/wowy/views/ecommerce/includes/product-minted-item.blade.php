@@ -38,11 +38,18 @@
 
 
             {{-- @if (EcommerceHelper::isCartEnabled()) --}}
-            {{-- <div class="product-action-1 show" @if (!EcommerceHelper::isReviewEnabled()) style="bottom: 10px;" @endif>
-                <a aria-label="{{ __('Add To Cart') }}" class="action-btn hover-up add-to-cart-button"
-                    data-id="{{ $product->id }}" data-url="{{ route('public.cart.add-to-cart') }}" href="#"><i
-                        class="far fa-shopping-bag"></i></a>
-            </div> --}}
+            <div class="nft-action" @if (!EcommerceHelper::isReviewEnabled()) style="bottom: 10px;" @endif>
+                @if ($product->status == 'published')
+                    <button class="ListNft btn_ingress" data-id="{{ $product->nft_id }}">
+                        <i class="fa-solid fa-plus"></i> List the NFT
+                    </button>
+                @else
+                    <button class="btn btn-primary ListNft" disabled>
+                        <i class="fa-solid fa-ban"></i> List the NFT
+                    </button>
+                @endif
+
+            </div>
             {{-- @endif --}}
         </div>
     </div>
