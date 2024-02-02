@@ -6304,7 +6304,7 @@ header.header-area .sticky-bar:not(.stick) .main-categories-wrap>a.cant-close>i 
 
 .pagination-area .page-item.active .page-link,
 .pagination-area .page-item:hover .page-link {
-    background: var(--color-brand);
+    background: #ff0076;
     color: #fff
 }
 
@@ -6324,7 +6324,7 @@ header.header-area .sticky-bar:not(.stick) .main-categories-wrap>a.cant-close>i 
 
 .pagination-area .page-link.dot {
     background-color: transparent;
-    color: var(--color-text);
+    color: #ff0076;
     letter-spacing: 2px
 }
 

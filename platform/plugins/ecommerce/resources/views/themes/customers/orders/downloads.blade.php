@@ -19,7 +19,7 @@
         @endforelse
 
     </div>
-    <div class="pagination-wrapper">
+    <div class="pagination-area">
         {{ $products->links() }}
     </div>
 @endsection
