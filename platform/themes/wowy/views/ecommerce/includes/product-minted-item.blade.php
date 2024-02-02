@@ -44,8 +44,7 @@
                         <i class="fas fa-plus"></i> List the NFT
                     </button>
                 @else
-                    <button class="btn btn_ingress ListNft col-12" style="font-size: x-small"
-                        disabled>
+                    <button class="btn btn_ingress ListNft col-12 disabled" style="font-size: x-small" disabled>
                         <i class="fas fa-ban"></i> List the NFT
                     </button>
                 @endif
