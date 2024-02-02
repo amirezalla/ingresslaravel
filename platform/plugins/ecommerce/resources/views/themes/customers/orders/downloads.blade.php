@@ -30,9 +30,9 @@
             Swal.fire({
                 title: 'List NFT',
                 html: `
-                        <input type="number" id="min-bid" class="swal2-input" placeholder="Amount of Min Bid">
-                        <input type="number" id="buy-now-price" class="swal2-input" placeholder="Buy Now Price">
-                        <select id="auction-end" class="swal2-input">
+                        <input type="number" id="min-bid" class="swal2-input" placeholder="Amount of Min Bid" style="font-size: medium;display: block;width: 100%;">
+                        <input type="number" id="buy-now-price" class="swal2-input" placeholder="Buy Now Price" style="font-size: medium;display: block;width: 100%;">
+                        <select id="auction-end" class="swal2-input" style="margin-top: 0px;">
                             <option value="12">12 Hours</option>
                             <option value="24">24 Hours</option>
                             <option value="72">3 Days</option>
