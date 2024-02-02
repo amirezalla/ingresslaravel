@@ -8,6 +8,10 @@
                         $originalFilePath = $product->images[0];
 
                         // Insert '-150x150' before the '.jpg' extension
+                        $pathInfo = pathinfo($originalFilePath);
+
+                        // Reconstruct the file path with the additional '-150x150' before the file extension
+                        $modifiedFilePath = $pathInfo['dirname'] . '/' . $pathInfo['filename'] . '-150x150.' . $pathInfo['extension'];
                         $modifiedFilePath = str_replace('.jpg', '-150x150.jpg', $originalFilePath);
 
                     @endphp
