@@ -3,7 +3,6 @@
         <div class="product-img-action-wrap">
             <div class="product-img product-img-zoom">
                 <a href="{{ $product->url }}">
-                    @dd($product->images[0])
                     <img class="default-img" src="/storage/{{ $product->images[0] }}" alt="{{ $product->name }}">
                     <img class="hover-img" src="/storage/{{ $product->images[0] }}" alt="{{ $product->name }}">
                 </a>
