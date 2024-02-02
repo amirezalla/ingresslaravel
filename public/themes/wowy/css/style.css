@@ -6307,6 +6307,10 @@ header.header-area .sticky-bar:not(.stick) .main-categories-wrap>a.cant-close>i 
     color: #fff
 }
 
+.pagination-area .page-item {
+    color: #ff0076;
+}
+
 .pagination-area .page-item:hover .page-link {
     background: #590f87;
 }
