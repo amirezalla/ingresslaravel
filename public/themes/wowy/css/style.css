@@ -4433,21 +4433,13 @@ h6.post-title {
 
 .btn_ingress:hover {
     color: white;
-    background: #590f87 !important;
     background: #590f87;
     background: -o-linear-gradient(45deg, #590f87 35%, #ff0076 100%, #590f87 100%);
     background: linear-gradient(45deg, #590f87 35%, #ff0076 100%, #590f87 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#590f87', endColorstr='#590f87', GradientType=1);
 }
 
-.btn_ingress:disabled,
-.btn_ingress.disabled {
-    color: rgb(118, 118, 118);
-    background: #590f87;
-    background: -o-linear-gradient(45deg, #6d4b82 0%, #fa90c1 50%, #6d4b82 100%);
-    background: linear-gradient(45deg, #6d4b82 0%, #fa90c1 50%, #6d4b82 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#590f87', endColorstr='#590f87', GradientType=1);
-}
+
 
 .header-info>ul>li a {
     color: white;
