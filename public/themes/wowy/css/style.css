@@ -2940,17 +2940,17 @@ table .product-thumbnail img {
 }
 
 .product-cart-wrap .product-badges.product-badges-position {
-    left: 20px;
+    left: 0;
     position: absolute;
-    top: 20px;
+    top: 5px;
+    width: 100%;
     z-index: 9
 }
 
 .product-cart-wrap .product-badges span {
-    border-radius: 30px;
     color: #fff;
     display: inline-block;
-    font-size: 12px;
+    font-size: x-small;
     letter-spacing: 1px;
     line-height: 1;
     margin-right: 10px;

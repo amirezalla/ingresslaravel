@@ -23,7 +23,7 @@
             <div class="product-badges product-badges-position product-badges-mrg">
                 @if ($product->status == 'pending')
                     <span
-                        style="background-color: #ff792e; font-size: 11px; color:">{{ __('Waiting for approval') }}</span>
+                        style="background-color: #ff792e; font-size: 11px;">{{ __('Waiting for approval') }}</span>
                 @elseif ($product->status == 'draft')
                     <span style="background-color: #e12c2c; font-size: 11px;">{{ __('Not Approved') }}</span>
                 @else
