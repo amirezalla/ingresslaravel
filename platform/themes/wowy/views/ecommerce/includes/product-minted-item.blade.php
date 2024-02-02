@@ -40,11 +40,11 @@
             {{-- @if (EcommerceHelper::isCartEnabled()) --}}
             <div class="nft-action" @if (!EcommerceHelper::isReviewEnabled()) style="bottom: 10px;" @endif>
                 @if ($product->status == 'published')
-                    <button class="ListNft btn_ingress" data-id="{{ $product->nft_id }}">
+                    <button class="ListNft btn_ingress" data-id="{{ $product->nft_id }}" style="font-size: x-small">
                         <i class="fas fa-plus"></i> List the NFT
                     </button>
                 @else
-                    <button class="btn btn-secondary ListNft" disabled>
+                    <button class="btn btn-secondary ListNft" style="font-size: x-small" disabled>
                         <i class="fas fa-ban"></i> List the NFT
                     </button>
                 @endif
