@@ -22,8 +22,7 @@
 
             <div class="product-badges product-badges-position product-badges-mrg">
                 @if ($product->status == 'pending')
-                    <span
-                        style="background-color: #ff792e; font-size: 11px;">{{ __('Waiting for approval') }}</span>
+                    <span style="background-color: #ff792e; font-size: 11px;">{{ __('Waiting for approval') }}</span>
                 @elseif ($product->status == 'draft')
                     <span style="background-color: #e12c2c; font-size: 11px;">{{ __('Not Approved') }}</span>
                 @else
@@ -40,12 +39,12 @@
             {{-- @if (EcommerceHelper::isCartEnabled()) --}}
             <div class="nft-action" @if (!EcommerceHelper::isReviewEnabled()) style="bottom: 10px;" @endif>
                 @if ($product->status == 'published')
-                    <button class="ListNft btn_ingress col-12" data-id="{{ $product->nft_id }}"
-                        style="font-size: x-small;padding:10px 20px;">
+                    <button class="ListNft btn btn_ingress col-12" data-id="{{ $product->nft_id }}"
+                        style="font-size: x-small">
                         <i class="fas fa-plus"></i> List the NFT
                     </button>
                 @else
-                    <button class="btn btn-secondary ListNft col-12" style="font-size: x-small;padding:10px 20px;"
+                    <button class="btn btn_ingress ListNft col-12" style="font-size: x-small"
                         disabled>
                         <i class="fas fa-ban"></i> List the NFT
                     </button>
