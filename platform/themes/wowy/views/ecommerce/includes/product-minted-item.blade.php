@@ -43,6 +43,11 @@
                         style="font-size: x-small">
                         <i class="fas fa-plus"></i> List the NFT
                     </button>
+                @elseif ($product->status == 'draft')
+                    <button class="NftMessage btn btn_ingress col-12" data-id="{{ $product->nft_id }}"
+                        style="font-size: x-small">
+                        <i class="fas fa-info"></i> See the reason
+                    </button>
                 @else
                     <button class="btn btn_ingress col-12 disabled"  style="font-size: x-small" disabled>
                         <i class="fas fa-ban"></i> List the NFT
