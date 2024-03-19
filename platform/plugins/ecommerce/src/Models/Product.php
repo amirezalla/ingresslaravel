@@ -68,7 +68,6 @@ class Product extends BaseModel
         'owner_eth_address',
         'nft_id',
         'artist_name',
-        'nft_message'
     ];
 
     protected $appends = [

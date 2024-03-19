@@ -571,7 +571,6 @@ strong {
 }
 
 .section-title.style-1 {
-    border-bottom: 1px solid #eee;
     padding-bottom: 15px;
     position: relative
 }
@@ -6569,7 +6568,7 @@ header.header-area .sticky-bar:not(.stick) .main-categories-wrap>a.cant-close>i 
 }
 
 .footer-list li a {
-    color: var(--color-grey-1);
+    color: #ffffffa8;
     display: block;
     font-size: 14px
 }
@@ -10770,7 +10769,7 @@ h6 {
 }
 
 .widget-title {
-    color: #212529 !important;
+    color: white !important;
 }
 
 .nav-tabs .nav-link.active {
